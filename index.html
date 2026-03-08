@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Lovely – nơi chia sẻ yêu thương.">
+    <title>Lovely</title>
+    <link rel="icon" href="https://github.com/Panbap/anh/blob/main/icon1.png?raw=true" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fffafa);
+            overflow: hidden;
+            font-family: "Mali", cursive;
+            height: 100vh;
+            position: relative;
+        }
+
+        .center-message {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 240, 245, 0.9));
+            padding: 40px 50px;
+            border-radius: 30px;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #c2185b;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(216, 27, 96, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            z-index: 1;
+            max-width: 90%;
+            animation: pulse 3s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        .center-message strong {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #d81b60, #f06292, #d81b60);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 99;
+            display: none;
+            animation: fadeInOverlay 0.3s ease;
+        }
+
+        @keyframes fadeInOverlay {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f8 100%);
+            border-radius: 25px;
+            box-shadow: 0 25px 80px rgba(216, 27, 96, 0.4);
+            padding: 30px;
+            text-align: center;
+            z-index: 100;
+            width: 90%;
+            max-width: 400px;
+            display: none;
+            animation: popupShow 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes popupShow {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5) rotate(-5deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+        }
+
+        /* .popup::before {
+            content: '🌸';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            animation: bounce 1s ease-in-out infinite;
+        } */
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .popup-content {
+            margin-top: 20px;
+        }
+
+        .popup img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid white;
+        }
+
+        .popup p {
+            font-size: 1.1rem;
+            color: #d81b60;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            background: linear-gradient(135deg, #d81b60 0%, #f06292 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(216, 27, 96, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .popup button:hover {
+            background: linear-gradient(135deg, #ad1457 0%, #e91e63 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.5);
+        }
+
+        .popup button:active {
+            transform: translateY(0);
+        }
+
+        .falling-letter {
+            position: absolute;
+            top: -100px;
+            width: 50px;
+            height: auto;
+            animation: fall linear;
+            cursor: pointer;
+            user-select: none;
+            z-index: 2;
+            animation-duration: 8s;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .falling-letter:hover {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 10px 20px rgba(216, 27, 96, 0.4));
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            20% {
+                transform: translateY(20vh) translateX(-20px) rotate(-10deg);
+            }
+
+            40% {
+                transform: translateY(40vh) translateX(15px) rotate(8deg);
+            }
+
+            60% {
+                transform: translateY(60vh) translateX(-15px) rotate(-6deg);
+            }
+
+            80% {
+                transform: translateY(80vh) translateX(10px) rotate(4deg);
+            }
+
+            100% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes letterClick {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.3) rotate(360deg);
+            }
+
+            100% {
+                transform: scale(0) rotate(720deg);
+            }
+        }
+
+        .letter-clicked {
+            animation: letterClick 0.6s ease-out forwards !important;
+        }
+
+        .heart {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            animation: explode 2s ease-out forwards;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(-50%, -50%) translate(0, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .center-gif {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            max-width: 40vw;
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        .touch-message {
+            position: fixed;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #d63384;
+            padding: 20px 30px;
+            border-radius: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 1s ease;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+        
+        .center-message,
+        .center-message *,
+        .center-gif,
+        .popup,
+        .popup *,
+        .flower,
+        .flower * {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: auto;
+        }
+        
+        /* ------------------------------
+        Responsive cho màn hình nhỏ
+        ---------------------------------- */
+        @media (max-width: 768px) {
+            .center-message {
+                width: calc(100% - 20px);
+                max-width: none;
+                padding: 20px 15px;
+                font-size: 1.1rem;
+                border-radius: 20px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .center-message strong {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+
+            .popup {
+                width: 90%;
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .popup img {
+                border-radius: 10px;
+                margin-bottom: 15px;
+            }
+
+            .popup p {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            .popup button {
+                padding: 10px 25px;
+                font-size: 0.95rem;
+            }
+
+            .falling-letter {
+                width: 40px;
+                animation-duration: 9s;
+            }
+
+            .heart {
+                font-size: 18px !important;
+            }
+
+            .falling-letter::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                right: -10px;
+                bottom: -10px;
+            }
+        }
+    </style>
+<style> body {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--dark-color);
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .flowers {
+            position: relative;
+            transform: scale(1.2);
+        }
+
+        @media (min-width: 768px) {
+            .flowers {
+                transform: scale(0.8);
+            }
+        }
+
+        .flower {
+            position: absolute;
+            bottom: 10vmin;
+            transform-origin: bottom center;
+            z-index: 10;
+            --fl-speed: 0.8s;
+        }
+
+        /* ========== FLOWER 1 ========== */
+        .flower--1 {
+            animation: moving-flower-1 4s linear infinite;
+        }
+
+        .flower--1 .flower__line {
+            height: 70vmin;
+            animation-delay: 0.3s;
+        }
+
+        .flower--1 .flower__line__leaf--1 {
+            animation: blooming-leaf-right var(--fl-speed) 1.6s backwards;
+        }
+
+        .flower--1 .flower__line__leaf--2 {
+            animation: blooming-leaf-right var(--fl-speed) 1.4s backwards;
+        }
+
+        .flower--1 .flower__line__leaf--3 {
+            animation: blooming-leaf-left var(--fl-speed) 1.2s backwards;
+        }
+
+        .flower--1 .flower__line__leaf--4 {
+            animation: blooming-leaf-left var(--fl-speed) 1s backwards;
+        }
+
+        .flower--1 .flower__line__leaf--5 {
+            animation: blooming-leaf-right var(--fl-speed) 1.8s backwards;
+        }
+
+        .flower--1 .flower__line__leaf--6 {
+            animation: blooming-leaf-left var(--fl-speed) 2s backwards;
+        }
+
+        /* ========== FLOWER 2 ========== */
+        .flower--2 {
+            left: 50%;
+            transform: rotate(20deg);
+            animation: moving-flower-2 4s linear infinite;
+        }
+
+        .flower--2 .flower__line {
+            height: 60vmin;
+            animation-delay: 0.6s;
+        }
+
+        .flower--2 .flower__line__leaf--1 {
+            animation: blooming-leaf-right var(--fl-speed) 1.9s backwards;
+        }
+
+        .flower--2 .flower__line__leaf--2 {
+            animation: blooming-leaf-right var(--fl-speed) 1.7s backwards;
+        }
+
+        .flower--2 .flower__line__leaf--3 {
+            animation: blooming-leaf-left var(--fl-speed) 1.5s backwards;
+        }
+
+        .flower--2 .flower__line__leaf--4 {
+            animation: blooming-leaf-left var(--fl-speed) 1.3s backwards;
+        }
+
+        /* ========== FLOWER 3 ========== */
+        .flower--3 {
+            left: 50%;
+            transform: rotate(-15deg);
+            animation: moving-flower-3 4s linear infinite;
+        }
+
+        .flower--3 .flower__line {
+            animation-delay: 0.9s;
+        }
+
+        .flower--3 .flower__line__leaf--1 {
+            animation: blooming-leaf-right var(--fl-speed) 2.5s backwards;
+        }
+
+        .flower--3 .flower__line__leaf--2 {
+            animation: blooming-leaf-right var(--fl-speed) 2.3s backwards;
+        }
+
+        .flower--3 .flower__line__leaf--3 {
+            animation: blooming-leaf-left var(--fl-speed) 2.1s backwards;
+        }
+
+        .flower--3 .flower__line__leaf--4 {
+            animation: blooming-leaf-left var(--fl-speed) 1.9s backwards;
+        }
+
+        /* ========== FLOWER PETALS ========== */
+        .flower__leafs {
+            position: relative;
+            animation: blooming-flower 2s backwards;
+        }
+
+        .flower__leafs--1 {
+            animation-delay: 1.1s;
+        }
+
+        .flower__leafs--2 {
+            animation-delay: 1.4s;
+        }
+
+        .flower__leafs--3 {
+            animation-delay: 1.7s;
+        }
+
+        .flower__leafs::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translate(-50%, -100%);
+            width: 8vmin;
+            height: 8vmin;
+            background-color: #6bf0ff;
+            filter: blur(10vmin);
+        }
+
+        .flower__leaf {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 8vmin;
+            height: 11vmin;
+            border-radius: 51% 49% 47% 53%/44% 45% 55% 69%;
+            background-color: #ffa7a7;
+            background-image: linear-gradient(to top, #ff9aa7, #ffa7a7);
+            transform-origin: bottom center;
+            opacity: 0.9;
+            box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
+        }
+
+        .flower__leaf--1 {
+            transform: translate(-10%, 1%) rotateY(40deg) rotateX(-50deg);
+        }
+
+        .flower__leaf--2 {
+            transform: translate(-50%, -4%) rotateX(40deg);
+        }
+
+        .flower__leaf--3 {
+            transform: translate(-90%, 0%) rotateY(45deg) rotateX(50deg);
+        }
+
+        .flower__leaf--4 {
+            width: 8vmin;
+            height: 8vmin;
+            transform-origin: bottom left;
+            border-radius: 4vmin 10vmin 4vmin 4vmin;
+            transform: translate(0%, 18%) rotateX(70deg) rotate(-43deg);
+            background-image: linear-gradient(to top, #ff9aa7, #ffa7a7);
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        .flower__white-circle {
+            position: absolute;
+            left: -3.5vmin;
+            top: -3vmin;
+            width: 9vmin;
+            height: 4vmin;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .flower__white-circle::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            border-radius: inherit;
+            background-image: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px),
+                repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px),
+                linear-gradient(90deg, rgb(255, 235, 18), rgb(255, 206, 0));
+        }
+
+        /* ========== FLOWER STEM ========== */
+        .flower__line {
+            height: 55vmin;
+            width: 1.5vmin;
+            background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.2)),
+                linear-gradient(to top, transparent 10%, #147a4f, #80ffb1);
+            box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+            animation: grow-flower-tree 4s backwards;
+        }
+
+        .flower__line__leaf {
+            --w: 7vmin;
+            --h: calc(var(--w) + 2vmin);
+            position: absolute;
+            top: 20%;
+            left: 90%;
+            width: var(--w);
+            height: var(--h);
+            border-top-right-radius: var(--h);
+            border-bottom-left-radius: var(--h);
+            background-image: linear-gradient(to top, rgba(20, 117, 122, 0.4), #1f967c);
+        }
+
+        .flower__line__leaf--1 {
+            transform: rotate(70deg) rotateY(30deg);
+        }
+
+        .flower__line__leaf--2 {
+            top: 45%;
+            transform: rotate(70deg) rotateY(30deg);
+        }
+
+        .flower__line__leaf--3,
+        .flower__line__leaf--4,
+        .flower__line__leaf--6 {
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-left-radius: var(--h);
+            border-bottom-right-radius: var(--h);
+            left: -460%;
+            top: 12%;
+            transform: rotate(-70deg) rotateY(30deg);
+        }
+
+        .flower__line__leaf--4 {
+            top: 40%;
+        }
+
+        .flower__line__leaf--5 {
+            top: 0;
+            transform-origin: left;
+            transform: rotate(70deg) rotateY(30deg) scale(0.6);
+        }
+
+        .flower__line__leaf--6 {
+            top: -2%;
+            left: -450%;
+            transform-origin: right;
+            transform: rotate(-70deg) rotateY(30deg) scale(0.6);
+        }
+
+        /* ========== LIGHTS ========== */
+        .flower__light {
+            position: absolute;
+            bottom: 0vmin;
+            width: 1vmin;
+            height: 1vmin;
+            background-color: rgb(255, 165, 165);
+            border-radius: 50%;
+            filter: blur(0.2vmin);
+            animation: light-ans 4s linear infinite backwards;
+        }
+
+        .flower__light:nth-child(odd) {
+            background-color: #ff9191;
+        }
+
+        .flower__light--1 {
+            left: -2vmin;
+            animation-delay: 1s;
+        }
+
+        .flower__light--2 {
+            left: 3vmin;
+            animation-delay: 0.5s;
+        }
+
+        .flower__light--3 {
+            left: -6vmin;
+            animation-delay: 0.3s;
+        }
+
+        .flower__light--4 {
+            left: 6vmin;
+            animation-delay: 0.9s;
+        }
+
+        .flower__light--5 {
+            left: -1vmin;
+            animation-delay: 1.5s;
+        }
+
+        .flower__light--6 {
+            left: -4vmin;
+            animation-delay: 3s;
+        }
+
+        .flower__light--7 {
+            left: 3vmin;
+            animation-delay: 2s;
+        }
+
+        .flower__light--8 {
+            left: -6vmin;
+            animation-delay: 3.5s;
+        }
+
+        /* ========== GRASS ========== */
+        .flower__grass {
+            --c: #0e7243;
+            --line-w: 1.5vmin;
+            position: absolute;
+            bottom: 12vmin;
+            left: -7vmin;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            z-index: 20;
+            transform-origin: bottom center;
+            transform: rotate(-48deg) rotateY(40deg);
+        }
+
+        .flower__grass--1 {
+            animation: moving-grass 2s linear infinite;
+        }
+
+        .flower__grass--2 {
+            left: 2vmin;
+            bottom: 10vmin;
+            transform: scale(0.5) rotate(75deg) rotateX(10deg) rotateY(-200deg);
+            opacity: 0.8;
+            z-index: 0;
+            animation: moving-grass--2 1.5s linear infinite;
+        }
+
+        .flower__grass--top {
+            width: 7vmin;
+            height: 10vmin;
+            border-top-right-radius: 100%;
+            border-right: var(--line-w) solid var(--c);
+            transform-origin: bottom center;
+            transform: rotate(-2deg);
+        }
+
+        .flower__grass--bottom {
+            margin-top: -2px;
+            width: var(--line-w);
+            height: 25vmin;
+            background-image: linear-gradient(to top, transparent, var(--c));
+        }
+
+        .flower__grass__leaf {
+            --size: 10vmin;
+            position: absolute;
+            width: calc(var(--size) * 2.1);
+            height: var(--size);
+            border-top-left-radius: var(--size);
+            border-top-right-radius: var(--size);
+            background-image: linear-gradient(to top, transparent, transparent 30%, var(--c));
+            z-index: 100;
+        }
+
+        .flower__grass__leaf--1 {
+            top: -6%;
+            left: 30%;
+            --size: 6vmin;
+            transform: rotate(-20deg);
+            animation: growing-grass-ans--1 2s 2.6s backwards;
+        }
+
+        .flower__grass__leaf--2 {
+            top: -5%;
+            left: -110%;
+            --size: 6vmin;
+            transform: rotate(10deg);
+            animation: growing-grass-ans--2 2s 2.4s linear backwards;
+        }
+
+        .flower__grass__leaf--3 {
+            top: 5%;
+            left: 60%;
+            --size: 8vmin;
+            transform: rotate(-18deg) rotateX(-20deg);
+            animation: growing-grass-ans--3 2s 2.2s linear backwards;
+        }
+
+        .flower__grass__leaf--4 {
+            top: 6%;
+            left: -135%;
+            --size: 8vmin;
+            transform: rotate(2deg);
+            animation: growing-grass-ans--4 2s 2s linear backwards;
+        }
+
+        .flower__grass__leaf--5 {
+            top: 20%;
+            left: 60%;
+            --size: 10vmin;
+            transform: rotate(-24deg) rotateX(-20deg);
+            animation: growing-grass-ans--5 2s 1.8s linear backwards;
+        }
+
+        .flower__grass__leaf--6 {
+            top: 22%;
+            left: -180%;
+            --size: 10vmin;
+            transform: rotate(10deg);
+            animation: growing-grass-ans--6 2s 1.6s linear backwards;
+        }
+
+        .flower__grass__leaf--7 {
+            top: 39%;
+            left: 70%;
+            --size: 10vmin;
+            transform: rotate(-10deg);
+            animation: growing-grass-ans--7 2s 1.4s linear backwards;
+        }
+
+        .flower__grass__leaf--8 {
+            top: 40%;
+            left: -215%;
+            --size: 11vmin;
+            transform: rotate(10deg);
+            animation: growing-grass-ans--8 2s 1.2s linear backwards;
+        }
+
+        .flower__grass__overlay {
+            position: absolute;
+            top: -10%;
+            right: 0%;
+            width: 100%;
+            height: 100%;
+            /* background-color: rgba(0, 0, 0, 0.6); */
+            filter: blur(1.5vmin);
+            z-index: 100;
+        }
+
+        .flower__grass--right {
+            --c: #0e7243;
+            position: absolute;
+            bottom: 12vmin;
+            right: -7vmin;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 20;
+            transform-origin: bottom center;
+            transform: rotate(40deg) rotateY(-35deg);
+            animation: moving-grass-right 2s ease-in-out infinite;
+        }
+        .hearts-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    bottom: 0;
+    font-size: 24px;
+    color: #ff4d6d;
+    animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+        /* 🌾 Hiệu ứng đung đưa mềm bên phải */
+        @keyframes moving-grass-right {
+
+            0%,
+            100% {
+                transform: rotate(40deg) rotateY(-35deg);
+            }
+
+            50% {
+                transform: rotate(43deg) rotateY(-35deg);
+            }
+        }
+
+        /* ========== LONG GRASS ========== */
+        .flower__g-long {
+            --w: 2vmin;
+            --h: 6vmin;
+            --c: #0e7243;
+            position: absolute;
+            bottom: 10vmin;
+            left: -3vmin;
+            transform-origin: bottom center;
+            transform: rotate(-30deg) rotateY(-20deg);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            animation: flower-g-long-ans 3s linear infinite;
+        }
+
+        .flower__g-long__top {
+            top: calc(var(--h) * -1);
+            width: calc(var(--w) + 1vmin);
+            height: var(--h);
+            border-top-right-radius: 100%;
+            border-right: 0.7vmin solid var(--c);
+            transform: translate(-0.7vmin, 1vmin);
+        }
+
+        .flower__g-long__bottom {
+            width: var(--w);
+            height: 50vmin;
+            transform-origin: bottom center;
+            background-image: linear-gradient(to top, transparent 30%, var(--c));
+            box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+            clip-path: polygon(35% 0, 65% 1%, 100% 100%, 0% 100%);
+        }
+
+        .grow-ans {
+            animation: grow-ans-animation 2s var(--d, 0s) backwards;
+        }
+
+        .growing-grass {
+            animation: grow-ans-animation 2s 1s backwards;
+        }
+
+        /* ========== KEYFRAMES ========== */
+        @keyframes moving-flower-1 {
+
+            0%,
+            100% {
+                transform: rotate(2deg);
+            }
+
+            50% {
+                transform: rotate(-2deg);
+            }
+        }
+
+        @keyframes moving-flower-2 {
+
+            0%,
+            100% {
+                transform: rotate(18deg);
+            }
+
+            50% {
+                transform: rotate(22deg);
+            }
+        }
+
+        @keyframes moving-flower-3 {
+
+            0%,
+            100% {
+                transform: rotate(-18deg);
+            }
+
+            50% {
+                transform: rotate(-20deg);
+            }
+        }
+
+        @keyframes blooming-flower {
+            0% {
+                transform: scale(0);
+            }
+        }
+
+        @keyframes blooming-leaf-right {
+            0% {
+                transform-origin: left;
+                transform: rotate(70deg) rotateY(30deg) scale(0);
+            }
+        }
+
+        @keyframes blooming-leaf-left {
+            0% {
+                transform-origin: right;
+                transform: rotate(-70deg) rotateY(30deg) scale(0);
+            }
+        }
+
+        @keyframes grow-flower-tree {
+            0% {
+                height: 0;
+                border-radius: 1vmin;
+            }
+        }
+
+        @keyframes light-ans {
+            0% {
+                opacity: 0;
+                transform: translateY(0vmin);
+            }
+
+            25% {
+                opacity: 1;
+                transform: translateY(-5vmin);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-15vmin);
+            }
+
+            75% {
+                opacity: 1;
+                transform: translateY(-20vmin);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-30vmin);
+            }
+        }
+
+        @keyframes moving-grass {
+
+            0%,
+            100% {
+                transform: rotate(-48deg) rotateY(40deg);
+            }
+
+            50% {
+                transform: rotate(-50deg) rotateY(40deg);
+            }
+        }
+
+        @keyframes moving-grass--2 {
+
+            0%,
+            100% {
+                transform: scale(0.5) rotate(75deg) rotateX(10deg) rotateY(-200deg);
+            }
+
+            50% {
+                transform: scale(0.5) rotate(79deg) rotateX(10deg) rotateY(-200deg);
+            }
+        }
+
+        @keyframes growing-grass-ans--1 {
+            0% {
+                transform-origin: bottom left;
+                transform: rotate(-20deg) scale(0);
+            }
+        }
+
+        @keyframes growing-grass-ans--2 {
+            0% {
+                transform-origin: bottom right;
+                transform: rotate(10deg) scale(0);
+            }
+        }
+
+        @keyframes growing-grass-ans--3 {
+            0% {
+                transform-origin: bottom left;
+                transform: rotate(-18deg) rotateX(-20deg) scale(0);
+            }
+        }
+
+        @keyframes growing-grass-ans--4 {
+            0% {
+                transform-origin: bottom right;
+                transform: rotate(2deg) scale(0);
+            }
+        }
+
+        @keyframes growing-grass-ans--5 {
+            0% {
+                transform-origin: bottom left;
+                transform: rotate(-24deg) rotateX(-20deg) scale(0);
+            }
+        }
+
+        @keyframes growing-grass-ans--6 {
+            0% {
+                transform-origin: bottom right;
+                transform: rotate(10deg) scale(0);
+            }
+        }
+
+        @keyframes growing-grass-ans--7 {
+            0% {
+                transform-origin: bottom left;
+                transform: rotate(-10deg) scale(0);
+            }
+        }
+
+        @keyframes growing-grass-ans--8 {
+            0% {
+                transform-origin: bottom right;
+                transform: rotate(10deg) scale(0);
+            }
+        }
+
+        @keyframes flower-g-long-ans {
+
+            0%,
+            100% {
+                transform: rotate(-30deg) rotateY(-20deg);
+            }
+
+            50% {
+                transform: rotate(-32deg) rotateY(-20deg);
+            }
+        }
+
+        @keyframes grow-ans-animation {
+            0% {
+                opacity: 0;
+                transform: translateY(10vmin);
+            }
+        }</style></head>
+
+<body>
+    <!-- Thông điệp chúc mừng-->
+    <div class="center-message">
+        <strong>Chúc Mừng Ngày Quốc Tế Phụ Nữ<br>Sau Dịp Này tui ây chúc u vài câu :>><br>ak mà nhắc nhỏ bật âm lượng lên bấm vào màn hình cái ik XD</strong>
+        <span id="centerText">DÙ biết là hơi trễ nhưng nhân ngày 8/3 tui chúc u luôn vui vẻ, học tốt và ngày càng cute hơn. Nếu hôm nay u cười nhiều hơn bình thường thì coi như lời chúc của tui có tác dụng rồi đó XDD
+    </div>
+
+    <!-- Ảnh động trang trí -->
+    <img src="./assets/mewmew.gif" alt="GIF" class="center-gif">
+
+    <!-- Hiển thị lời chúc -->
+    <div class="popup" id="popup" data-current-message="Cảm ơn mẹ đã luôn hy sinh và yêu thương con vô điều kiện." style="display: none;">
+        <div class="popup-content">
+            <img id="popupImage" src="./assets/a1.jpg" alt="Lời chúc">
+            <p id="popupMessage">Cảm ơn nội đã luôn hy sinh và yêu thương con vô điều kiện.</p>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <!-- Nhạc nền  -->
+    <audio id="player" src="./assets/a.mp3" autoplay loop></audio>
+
+    <!-- Hiển thị thông báo nổi -->
+    <div id="touchMessage" class="touch-message fade-out" style="opacity: 1; display: none;">
+        Chạm vào thư nhé
+    </div>
+
+    <div class="flowers">
+        <!-- ========== Flower 1 ========== -->
+        <div class="flower flower--1">
+            <div class="flower__leafs flower__leafs--1">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+
+                <div class="flower__light flower__light--1"></div>
+                <div class="flower__light flower__light--2"></div>
+                <div class="flower__light flower__light--3"></div>
+                <div class="flower__light flower__light--4"></div>
+                <div class="flower__light flower__light--5"></div>
+                <div class="flower__light flower__light--6"></div>
+                <div class="flower__light flower__light--7"></div>
+                <div class="flower__light flower__light--8"></div>
+            </div>
+
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+                <div class="flower__line__leaf flower__line__leaf--4"></div>
+                <div class="flower__line__leaf flower__line__leaf--5"></div>
+                <div class="flower__line__leaf flower__line__leaf--6"></div>
+            </div>
+        </div>
+
+        <!-- ========== Flower 2 ========== -->
+        <div class="flower flower--2">
+            <div class="flower__leafs flower__leafs--2">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+
+                <div class="flower__light flower__light--1"></div>
+                <div class="flower__light flower__light--2"></div>
+                <div class="flower__light flower__light--3"></div>
+                <div class="flower__light flower__light--4"></div>
+                <div class="flower__light flower__light--5"></div>
+                <div class="flower__light flower__light--6"></div>
+                <div class="flower__light flower__light--7"></div>
+                <div class="flower__light flower__light--8"></div>
+            </div>
+
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+                <div class="flower__line__leaf flower__line__leaf--4"></div>
+            </div>
+        </div>
+
+        <!-- ========== Flower 3 ========== -->
+        <div class="flower flower--3">
+            <div class="flower__leafs flower__leafs--3">
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+                <div class="flower__white-circle"></div>
+
+                <div class="flower__light flower__light--1"></div>
+                <div class="flower__light flower__light--2"></div>
+                <div class="flower__light flower__light--3"></div>
+                <div class="flower__light flower__light--4"></div>
+                <div class="flower__light flower__light--5"></div>
+                <div class="flower__light flower__light--6"></div>
+                <div class="flower__light flower__light--7"></div>
+                <div class="flower__light flower__light--8"></div>
+            </div>
+
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+                <div class="flower__line__leaf flower__line__leaf--4"></div>
+
+            </div>
+        </div>
+
+        <!-- ========== Grass ========== -->
+        <div class="grow-ans" style="--d:1.2s">
+            <div class="flower__g-long">
+                <div class="flower__g-long__top"></div>
+                <div class="flower__g-long__bottom"></div>
+            </div>
+        </div>
+        <div class="growing-grass">
+            <div class="flower__grass flower__grass--right">
+                <div class="flower__grass--top"></div>
+                <div class="flower__grass--bottom"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+                <div class="flower__grass__overlay"></div>
+            </div>
+        </div>
+
+        <div class="growing-grass">
+            <div class="flower__grass flower__grass--1">
+                <div class="flower__grass--top"></div>
+                <div class="flower__grass--bottom"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+                <div class="flower__grass__overlay"></div>
+            </div>
+        </div>
+    </div>
+    <script data-version="1.0" type="text/javascript" src="./assets/scripts.js?v=1.0"></script><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 98.572vw; width: 74.2385px; transform-origin: center bottom; pointer-events: none; transform: rotate(-7.89963deg);">
+    <script>
+        const _0x57f889=_0x162c;(function(_0x393b73,_0x361cc1){const _0x59a508=_0x162c,_0x3fb1db=_0x393b73();while(!![]){try{const _0x1263d3=-parseInt(_0x59a508(0xde))/0x1+parseInt(_0x59a508(0x114))/0x2*(parseInt(_0x59a508(0x113))/0x3)+parseInt(_0x59a508(0x107))/0x4*(-parseInt(_0x59a508(0xec))/0x5)+-parseInt(_0x59a508(0xed))/0x6+parseInt(_0x59a508(0xd8))/0x7+-parseInt(_0x59a508(0xe1))/0x8+-parseInt(_0x59a508(0xe2))/0x9*(-parseInt(_0x59a508(0xf7))/0xa);if(_0x1263d3===_0x361cc1)break;else _0x3fb1db['push'](_0x3fb1db['shift']());}catch(_0x405ded){_0x3fb1db['push'](_0x3fb1db['shift']());}}}(_0x170b,0xa9074));function _0x3502(_0x26c452,_0x6dd4c){const _0x1642f6=_0x28a9();return(_0x3502=function(_0x1b34e0,_0x2f5f25){return _0x1642f6[_0x1b34e0-=0x145];})(_0x26c452,_0x6dd4c);}const _0xda42d8=_0x3502;!function(_0x3aec16,_0x5f03f3){const _0x3290c7=_0x162c,_0x20d4f9=_0x3502,_0x861836=_0x28a9();for(;;)try{if(0x415ef===-parseInt(_0x20d4f9(0x15d))/0x1*(parseInt(_0x20d4f9(0x16a))/0x2)+-parseInt(_0x20d4f9(0x181))/0x3*(parseInt(_0x20d4f9(0x14c))/0x4)+parseInt(_0x20d4f9(0x151))/0x5+-parseInt(_0x20d4f9(0x16b))/0x6+parseInt(_0x20d4f9(0x145))/0x7+parseInt(_0x20d4f9(0x161))/0x8+-parseInt(_0x20d4f9(0x164))/0x9)break;_0x861836['push'](_0x861836[_0x3290c7(0x111)]());}catch(_0x4d4fa4){_0x861836['push'](_0x861836[_0x3290c7(0x111)]());}}();const touchMsg=document['getElementById'](_0xda42d8(0x14b));function _0x170b(){const _0x4f849c=['824986soXNLE','Cảm\x20ơn\x20cô\x20đã\x20dìu\x20dắt\x20và\x20luôn\x20dạy\x20bảo\x20tận\x20tình!','querySelector','search','2622760BIsZHD','Chúc\x20cậu\x20luôn\x20vui\x20vẻ,\x20tươi\x20tắn\x20và\x20thành\x20công\x20trong\x20mọi\x20việc!','Chúc\x20chị\x20có\x20một\x20ngày\x20ngập\x20tràn\x20niềm\x20vui\x20và\x20tiếng\x20cười!','2081580aqWSEE','fade-out','Cảm\x20ơn\x20mẹ\x20đã\x20luôn\x20hy\x20sinh\x20và\x20yêu\x20thương\x20con\x20vô\x20điều\x20kiện.','172sEUiGI','6284635ZJpNkr','Chúc\x20bạn\x20mãi\x20giữ\x20được\x20trái\x20tim\x20ấm\x20áp\x20và\x20nụ\x20cười\x20rạng\x20rỡ!','3738688aoZhWc','add','classList','1111185nYgnaW','890082MEuWkV','97924gwcPdR','map','5924936QakzYn','8666721UubTnt','load','Vợ\x20là\x20món\x20quà\x20quý\x20giá\x20nhất\x20cuộc\x20đời\x20anh!','touchMessage','length','images','Mong\x20chị\x20luôn\x20khỏe\x20mạnh,\x20vui\x20vẻ\x20và\x20tràn\x20đầy\x20nhiệt\x20huyết!','get','Chúc\x20mẹ\x20luôn\x20vui\x20vẻ,\x20bình\x20an\x20và\x20mãi\x20là\x20điểm\x20tựa\x20vững\x20chắc\x20của\x20con!','Mong\x20bạn\x20luôn\x20gặt\x20hái\x20được\x20thành\x20công\x20và\x20những\x20điều\x20tốt\x20đẹp\x20nhất!','20SFyxEs','4338252Rfvwbn','group','textContent','.center-message\x20strong','title','Chúc\x20chị\x20luôn\x20xinh\x20đẹp,\x20hạnh\x20phúc\x20và\x20đạt\x20được\x20mọi\x20điều\x20mong\x20muốn!','style','Cầu\x20mong\x20mẹ\x20luôn\x20được\x20bình\x20an\x20và\x20mọi\x20điều,\x20con\x20yêu\x20mẹ.','1phNIwI','display','10yCBdrw','Chúc\x20bạn\x20mãi\x20xinh\x20đẹp,\x20tự\x20tin\x20và\x20tỏa\x20sáng\x20như\x20ánh\x20mặt\x20trời!','Chúc\x20cô\x20luôn\x20trẻ\x20trung,\x20khỏe\x20mạnh\x20và\x20mãi\x20là\x20người\x20truyền\x20cảm\x20hứng!','innerHTML','\x20body\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20display:\x20flex;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20align-items:\x20flex-end;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20justify-content:\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20min-height:\x20100vh;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:\x20var(--dark-color);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20overflow:\x20hidden;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20perspective:\x201000px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flowers\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20relative;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20scale(0.9);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@media\x20(min-width:\x20768px)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20.flowers\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20scale(0.5);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bottom:\x2010vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20z-index:\x2010;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--fl-speed:\x200.8s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20/*\x20==========\x20FLOWER\x201\x20==========\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20moving-flower-1\x204s\x20linear\x20infinite;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--1\x20.flower__line\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x2070vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x200.3s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--1\x20.flower__line__leaf--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-right\x20var(--fl-speed)\x201.6s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--1\x20.flower__line__leaf--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-right\x20var(--fl-speed)\x201.4s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--1\x20.flower__line__leaf--3\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-left\x20var(--fl-speed)\x201.2s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--1\x20.flower__line__leaf--4\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-left\x20var(--fl-speed)\x201s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--1\x20.flower__line__leaf--5\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-right\x20var(--fl-speed)\x201.8s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--1\x20.flower__line__leaf--6\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-left\x20var(--fl-speed)\x202s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20/*\x20==========\x20FLOWER\x202\x20==========\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x2050%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(20deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20moving-flower-2\x204s\x20linear\x20infinite;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--2\x20.flower__line\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x2060vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x200.6s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--2\x20.flower__line__leaf--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-right\x20var(--fl-speed)\x201.9s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--2\x20.flower__line__leaf--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-right\x20var(--fl-speed)\x201.7s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--2\x20.flower__line__leaf--3\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-left\x20var(--fl-speed)\x201.5s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--2\x20.flower__line__leaf--4\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-left\x20var(--fl-speed)\x201.3s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20/*\x20==========\x20FLOWER\x203\x20==========\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--3\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x2050%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-15deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20moving-flower-3\x204s\x20linear\x20infinite;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--3\x20.flower__line\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x200.9s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--3\x20.flower__line__leaf--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-right\x20var(--fl-speed)\x202.5s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--3\x20.flower__line__leaf--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-right\x20var(--fl-speed)\x202.3s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--3\x20.flower__line__leaf--3\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-left\x20var(--fl-speed)\x202.1s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower--3\x20.flower__line__leaf--4\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-leaf-left\x20var(--fl-speed)\x201.9s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20/*\x20==========\x20FLOWER\x20PETALS\x20==========\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__leafs\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20relative;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20blooming-flower\x202s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__leafs--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x201.1s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__leafs--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x201.4s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__leafs--3\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x201.7s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__leafs::after\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20content:\x20\x22\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translate(-50%,\x20-100%);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x208vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x208vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:\x20#6bf0ff;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20filter:\x20blur(10vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__leaf\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bottom:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x2050%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x208vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x2011vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-radius:\x2051%\x2049%\x2047%\x2053%/44%\x2045%\x2055%\x2069%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:\x20#ffa7a7;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-image:\x20linear-gradient(to\x20top,\x20#ff9aa7,\x20#ffa7a7);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x200.9;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20box-shadow:\x20inset\x200\x200\x202vmin\x20rgba(255,\x20255,\x20255,\x200.5);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__leaf--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translate(-10%,\x201%)\x20rotateY(40deg)\x20rotateX(-50deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__leaf--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translate(-50%,\x20-4%)\x20rotateX(40deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__leaf--3\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translate(-90%,\x200%)\x20rotateY(45deg)\x20rotateX(50deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__leaf--4\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x208vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x208vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20left;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-radius:\x204vmin\x2010vmin\x204vmin\x204vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translate(0%,\x2018%)\x20rotateX(70deg)\x20rotate(-43deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-image:\x20linear-gradient(to\x20top,\x20#ff9aa7,\x20#ffa7a7);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20z-index:\x201;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x200.8;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__white-circle\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-3.5vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x20-3vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x209vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x204vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-radius:\x2050%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:\x20#fff;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__white-circle::after\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20content:\x20\x22\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x2050%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x2045%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translate(-50%,\x20-50%);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x2060%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x2060%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-radius:\x20inherit;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-image:\x20repeating-linear-gradient(135deg,\x20rgba(0,\x200,\x200,\x200.03)\x200px,\x20rgba(0,\x200,\x200,\x200.03)\x201px,\x20transparent\x201px,\x20transparent\x2012px),\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20repeating-linear-gradient(45deg,\x20rgba(0,\x200,\x200,\x200.03)\x200px,\x20rgba(0,\x200,\x200,\x200.03)\x201px,\x20transparent\x201px,\x20transparent\x2012px),\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20linear-gradient(90deg,\x20rgb(255,\x20235,\x2018),\x20rgb(255,\x20206,\x200));\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20/*\x20==========\x20FLOWER\x20STEM\x20==========\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__line\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x2055vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x201.5vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-image:\x20linear-gradient(to\x20left,\x20rgba(0,\x200,\x200,\x200.2),\x20transparent,\x20rgba(255,\x20255,\x20255,\x200.2)),\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20linear-gradient(to\x20top,\x20transparent\x2010%,\x20#147a4f,\x20#80ffb1);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20box-shadow:\x20inset\x200\x200\x202px\x20rgba(0,\x200,\x200,\x200.5);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20grow-flower-tree\x204s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__line__leaf\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--w:\x207vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--h:\x20calc(var(--w)\x20+\x202vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x2020%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x2090%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20var(--w);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x20var(--h);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-top-right-radius:\x20var(--h);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-bottom-left-radius:\x20var(--h);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-image:\x20linear-gradient(to\x20top,\x20rgba(20,\x20117,\x20122,\x200.4),\x20#1f967c);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__line__leaf--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(70deg)\x20rotateY(30deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__line__leaf--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x2045%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(70deg)\x20rotateY(30deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__line__leaf--3,\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__line__leaf--4,\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__line__leaf--6\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-top-right-radius:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-bottom-left-radius:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-top-left-radius:\x20var(--h);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-bottom-right-radius:\x20var(--h);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-460%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x2012%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-70deg)\x20rotateY(30deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__line__leaf--4\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x2040%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__line__leaf--5\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20left;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(70deg)\x20rotateY(30deg)\x20scale(0.6);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__line__leaf--6\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x20-2%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-450%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20right;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-70deg)\x20rotateY(30deg)\x20scale(0.6);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20/*\x20==========\x20LIGHTS\x20==========\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__light\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bottom:\x200vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x201vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x201vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:\x20rgb(255,\x20165,\x20165);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-radius:\x2050%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20filter:\x20blur(0.2vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20light-ans\x204s\x20linear\x20infinite\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__light:nth-child(odd)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-color:\x20#ff9191;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__light--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-2vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x201s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__light--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x203vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x200.5s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__light--3\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-6vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x200.3s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__light--4\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x206vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x200.9s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__light--5\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-1vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x201.5s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__light--6\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-4vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x203s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__light--7\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x203vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x202s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__light--8\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-6vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation-delay:\x203.5s;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20/*\x20==========\x20GRASS\x20==========\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--c:\x20#0e7243;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--line-w:\x201.5vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bottom:\x2012vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-7vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20display:\x20flex;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20flex-direction:\x20column;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20align-items:\x20flex-end;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20z-index:\x2020;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-48deg)\x20rotateY(40deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20moving-grass\x202s\x20linear\x20infinite;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x202vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bottom:\x2010vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20scale(0.5)\x20rotate(75deg)\x20rotateX(10deg)\x20rotateY(-200deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x200.8;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20z-index:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20moving-grass--2\x201.5s\x20linear\x20infinite;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass--top\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x207vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x2010vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-top-right-radius:\x20100%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-right:\x20var(--line-w)\x20solid\x20var(--c);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-2deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass--bottom\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20margin-top:\x20-2px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20var(--line-w);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x2025vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-image:\x20linear-gradient(to\x20top,\x20transparent,\x20var(--c));\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass__leaf\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--size:\x2010vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20calc(var(--size)\x20*\x202.1);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x20var(--size);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-top-left-radius:\x20var(--size);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-top-right-radius:\x20var(--size);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-image:\x20linear-gradient(to\x20top,\x20transparent,\x20transparent\x2030%,\x20var(--c));\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20z-index:\x20100;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass__leaf--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x20-6%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x2030%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--size:\x206vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-20deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20growing-grass-ans--1\x202s\x202.6s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass__leaf--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x20-5%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-110%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--size:\x206vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(10deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20growing-grass-ans--2\x202s\x202.4s\x20linear\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass__leaf--3\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x205%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x2060%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--size:\x208vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-18deg)\x20rotateX(-20deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20growing-grass-ans--3\x202s\x202.2s\x20linear\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass__leaf--4\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x206%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-135%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--size:\x208vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(2deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20growing-grass-ans--4\x202s\x202s\x20linear\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass__leaf--5\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x2020%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x2060%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--size:\x2010vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-24deg)\x20rotateX(-20deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20growing-grass-ans--5\x202s\x201.8s\x20linear\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass__leaf--6\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x2022%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-180%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--size:\x2010vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(10deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20growing-grass-ans--6\x202s\x201.6s\x20linear\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass__leaf--7\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x2039%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x2070%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--size:\x2010vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-10deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20growing-grass-ans--7\x202s\x201.4s\x20linear\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass__leaf--8\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x2040%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-215%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--size:\x2011vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(10deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20growing-grass-ans--8\x202s\x201.2s\x20linear\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass__overlay\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x20-10%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20right:\x200%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20100%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x20100%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20/*\x20background-color:\x20rgba(0,\x200,\x200,\x200.6);\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20filter:\x20blur(1.5vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20z-index:\x20100;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__grass--right\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--c:\x20#0e7243;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bottom:\x2012vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20right:\x20-7vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20display:\x20flex;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20flex-direction:\x20column;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20align-items:\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20z-index:\x2020;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(40deg)\x20rotateY(-35deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20moving-grass-right\x202s\x20ease-in-out\x20infinite;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20/*\x20🌾\x20Hiệu\x20ứng\x20đung\x20đưa\x20mềm\x20bên\x20phải\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20moving-grass-right\x20{\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20100%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(40deg)\x20rotateY(-35deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2050%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(43deg)\x20rotateY(-35deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20/*\x20==========\x20LONG\x20GRASS\x20==========\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__g-long\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--w:\x202vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--h:\x206vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20--c:\x20#0e7243;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20bottom:\x2010vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x20-3vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-30deg)\x20rotateY(-20deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20display:\x20flex;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20flex-direction:\x20column;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20align-items:\x20flex-end;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20flower-g-long-ans\x203s\x20linear\x20infinite;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__g-long__top\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x20calc(var(--h)\x20*\x20-1);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20calc(var(--w)\x20+\x201vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x20var(--h);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-top-right-radius:\x20100%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-right:\x200.7vmin\x20solid\x20var(--c);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translate(-0.7vmin,\x201vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.flower__g-long__bottom\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20var(--w);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x2050vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background-image:\x20linear-gradient(to\x20top,\x20transparent\x2030%,\x20var(--c));\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20box-shadow:\x20inset\x200\x200\x202px\x20rgba(0,\x200,\x200,\x200.5);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20clip-path:\x20polygon(35%\x200,\x2065%\x201%,\x20100%\x20100%,\x200%\x20100%);\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.grow-ans\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20grow-ans-animation\x202s\x20var(--d,\x200s)\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20.growing-grass\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20grow-ans-animation\x202s\x201s\x20backwards;\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20/*\x20==========\x20KEYFRAMES\x20==========\x20*/\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20moving-flower-1\x20{\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20100%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(2deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2050%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-2deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20moving-flower-2\x20{\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20100%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(18deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2050%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(22deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20moving-flower-3\x20{\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20100%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-18deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2050%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-20deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20blooming-flower\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20blooming-leaf-right\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20left;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(70deg)\x20rotateY(30deg)\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20blooming-leaf-left\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20right;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-70deg)\x20rotateY(30deg)\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20grow-flower-tree\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-radius:\x201vmin;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20light-ans\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translateY(0vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2025%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x201;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translateY(-5vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2050%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x201;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translateY(-15vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2075%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x201;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translateY(-20vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20100%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translateY(-30vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20moving-grass\x20{\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20100%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-48deg)\x20rotateY(40deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2050%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-50deg)\x20rotateY(40deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20moving-grass--2\x20{\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20100%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20scale(0.5)\x20rotate(75deg)\x20rotateX(10deg)\x20rotateY(-200deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2050%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20scale(0.5)\x20rotate(79deg)\x20rotateX(10deg)\x20rotateY(-200deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20growing-grass-ans--1\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20left;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-20deg)\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20growing-grass-ans--2\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20right;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(10deg)\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20growing-grass-ans--3\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20left;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-18deg)\x20rotateX(-20deg)\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20growing-grass-ans--4\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20right;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(2deg)\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20growing-grass-ans--5\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20left;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-24deg)\x20rotateX(-20deg)\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20growing-grass-ans--6\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20right;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(10deg)\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20growing-grass-ans--7\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20left;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-10deg)\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20growing-grass-ans--8\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform-origin:\x20bottom\x20right;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(10deg)\x20scale(0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20flower-g-long-ans\x20{\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20100%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-30deg)\x20rotateY(-20deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2050%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20rotate(-32deg)\x20rotateY(-20deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20grow-ans-animation\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translateY(10vmin);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}','Chúc\x20cậu\x20luôn\x20mạnh\x20mẽ,\x20tự\x20tin\x20và\x20được\x20yêu\x20thương\x20nhiều\x20hơn\x20nữa!','Hy\x20vọng\x20em\x20luôn\x20giữ\x20được\x20nụ\x20cười\x20tươi\x20sáng\x20và\x20trái\x20tim\x20ấm\x20áp!','Chúc\x20chị\x20một\x20ngày\x20thật\x20vui\x20nhé\x20chị\x20yêu,\x20mãi\x20tươi\x20trẻ\x20và\x20rạng\x20rỡ!','Chúc\x20cô\x20luôn\x20mạnh\x20khỏe,\x20hạnh\x20phúc\x20và\x20tràn\x20đầy\x20năng\x20lượng!','Chúc\x20cô\x20ngày\x20thật\x20rực\x20rỡ\x20và\x20đáng\x20nhớ!','Cảm\x20ơn\x20vợ\x20đã\x20luôn\x20bên\x20cạnh\x20và\x20yêu\x20thương\x20anh\x20vô\x20điều\x20kiện!','Ngày\x20hôm\x20nay\x20là\x20một\x20ngày\x20thật\x20ý\x20nghĩa\x20nhé,\x20người\x20bạn\x20thân\x20yêu!','Hy\x20vọng\x20vợ\x20có\x20một\x20ngày\x20thật\x20ngọt\x20ngào\x20và\x20tràn\x20đầy\x20yêu\x20thương!','head','opacity','Mong\x20cô\x20luôn\x20vui\x20vẻ,\x20bình\x20an\x20và\x20có\x20thật\x20nhiều\x20niềm\x20vui\x20trong\x20cuộc\x20sống!','52172tFOFSD','Chúc\x20chị\x20luôn\x20thành\x20công\x20và\x20gặp\x20nhiều\x20may\x20mắn\x20trong\x20cuộc\x20sống!','1000880REHTxx','Mong\x20em\x20luôn\x20tự\x20tin,\x20thành\x20công\x20và\x20tràn\x20đầy\x20sức\x20sống!','Con\x20yêu\x20mẹ\x20rất\x20nhiều,\x20chúc\x20mẹ\x20một\x20ngày\x20thật\x20ý\x20nghĩa!','parse','Cảm\x20ơn\x20bạn\x20vì\x20luôn\x20là\x20người\x20bạn\x20tuyệt\x20vời,\x20luôn\x20chia\x20sẻ\x20và\x20lắng\x20nghe!','Mong\x20vợ\x20luôn\x20khỏe\x20mạnh,\x20hạnh\x20phúc\x20và\x20mãi\x20bên\x20anh!','Mẹ\x20là\x20người\x20phụ\x20nữ\x20tuyệt\x20vời\x20nhất,\x20chúc\x20mẹ\x20luôn\x20tươi\x20trẻ\x20và\x20tràn\x20đầy\x20năng\x20lượng!','Chúc\x20em\x20ngày\x20thật\x20vui\x20vẻ,\x20xinh\x20đẹp\x20và\x20hạnh\x20phúc!','shift','./assets/a1.jpg','9JpOJaz'];_0x170b=function(){return _0x4f849c;};return _0x170b();}window[_0xda42d8(0x154)](_0xda42d8(0x178),()=>{const _0x585f08=_0x162c,_0x32b0bd=_0xda42d8;touchMsg[_0x585f08(0xf3)][_0x32b0bd(0x16e)]='1',setTimeout(()=>{const _0x472d69=_0x585f08,_0x520174=_0x32b0bd;touchMsg[_0x472d69(0xdc)][_0x520174(0x153)](_0x520174(0x180)),setTimeout(()=>{const _0x11bfde=_0x520174;touchMsg[_0x11bfde(0x15a)][_0x11bfde(0x168)]='none';},0x3e8);},0x7d0);});const style=document['createElement'](_0x57f889(0xf3));function _0x28a9(){const _0x330d41=_0x57f889,_0x54fa42=[_0x330d41(0x115),_0x330d41(0xe9),_0x330d41(0xd5),'17796zXjSrk','Hy\x20vọng\x20bạn\x20có\x20một\x20ngày\x20thật\x20vui\x20vẻ,\x20hạnh\x20phúc\x20và\x20tràn\x20đầy\x20tiếng\x20cười!','Chúc\x20vợ\x20có\x20một\x20ngày\x20thật\x20đặc\x20biệt\x20và\x20đầy\x20niềm\x20vui!','Chúc\x20cậu\x20có\x20một\x20ngày\x20thật\x20đặc\x20biệt\x20và\x20tràn\x20đầy\x20hạnh\x20phúc!',_0x330d41(0xd1),'Hy\x20vọng\x20cậu\x20có\x20một\x20ngày\x20thật\x20ý\x20nghĩa\x20bên\x20những\x20người\x20thân\x20yêu!',_0x330d41(0xe4),_0x330d41(0xd9),_0x330d41(0x10f),_0x330d41(0xe6),_0x330d41(0xe5),_0x330d41(0xd7),_0x330d41(0xf0),_0x330d41(0x112),_0x330d41(0x116),_0x330d41(0x110),_0x330d41(0x109),_0x330d41(0x10b),_0x330d41(0xdb),'addEventListener',_0x330d41(0x10e),'Cảm\x20ơn\x20cô\x20vì\x20đã\x20luôn\x20tận\x20tâm\x20dạy\x20dỗ\x20và\x20yêu\x20thương\x20học\x20trò!',_0x330d41(0xf1),_0x330d41(0x103),_0x330d41(0xfa),_0x330d41(0xf3),_0x330d41(0x102),_0x330d41(0x101),_0x330d41(0xf5),_0x330d41(0xeb),_0x330d41(0xe7),'appendChild',_0x330d41(0xda),_0x330d41(0xd6),_0x330d41(0xe0),_0x330d41(0xdd),_0x330d41(0x10a),_0x330d41(0xd3),_0x330d41(0xfe),_0x330d41(0xf6),'Chúc\x20em\x20luôn\x20rạng\x20rỡ\x20như\x20ánh\x20nắng\x20ban\x20mai!',_0x330d41(0xdf),_0x330d41(0xd4),'Cảm\x20ơn\x20cậu\x20vì\x20đã\x20luôn\x20là\x20một\x20người\x20bạn\x20tuyệt\x20vời!',_0x330d41(0xf2),_0x330d41(0x105),_0x330d41(0xd0),_0x330d41(0xe8),_0x330d41(0xff),_0x330d41(0x10d),_0x330d41(0xee),'location',_0x330d41(0xfb),_0x330d41(0x106),'Chúc\x20mẹ\x20luôn\x20mạnh\x20khỏe,\x20hạnh\x20phúc\x20và\x20luôn\x20mỉm\x20cười!',_0x330d41(0xe3),_0x330d41(0x10c),'Em\x20luôn\x20là\x20bông\x20hoa\x20đẹp\x20nhất\x20trong\x20mắt\x20mọi\x20người!',_0x330d41(0xf4),'Anh\x20yêu\x20vợ\x20rất\x20nhiều,\x20cảm\x20ơn\x20vì\x20tất\x20cả\x20những\x20gì\x20vợ\x20đã\x20làm\x20cho\x20anh!','Chị\x20là\x20người\x20tuyệt\x20vời\x20nhất\x20mà\x20em\x20luôn\x20ngưỡng\x20mộ!'];return(_0x28a9=function(){return _0x54fa42;})();}function _0x162c(_0x1b2369,_0x14407a){const _0x170b6b=_0x170b();return _0x162c=function(_0x162c4d,_0x4b32c8){_0x162c4d=_0x162c4d-0xd0;let _0x4848a0=_0x170b6b[_0x162c4d];return _0x4848a0;},_0x162c(_0x1b2369,_0x14407a);}style[_0xda42d8(0x159)]=_0xda42d8(0x175),document[_0x57f889(0x104)][_0xda42d8(0x160)](style);const textGroups={'me':[_0xda42d8(0x177),_0xda42d8(0x152),_0xda42d8(0x162),_0x57f889(0xea),_0xda42d8(0x149),_0xda42d8(0x17b)],'chi':[_0xda42d8(0x16d),_0xda42d8(0x17d),_0xda42d8(0x167),_0x57f889(0x108),_0xda42d8(0x170),_0xda42d8(0x166)],'co':[_0xda42d8(0x171),_0xda42d8(0x156),_0x57f889(0x100),_0xda42d8(0x176),_0x57f889(0xf9),_0xda42d8(0x17e)],'em':[_0xda42d8(0x150),_0xda42d8(0x17a),_0xda42d8(0x169),_0xda42d8(0x165),'Chúc\x20em\x20có\x20một\x20ngày\x20thật\x20đặc\x20biệt\x20và\x20đáng\x20nhớ!',_0x57f889(0xfd)],'vo':[_0xda42d8(0x158),_0xda42d8(0x147),_0xda42d8(0x15c),_0xda42d8(0x155),_0xda42d8(0x183),_0xda42d8(0x17c)],'ban':[_0xda42d8(0x182),_0xda42d8(0x172),_0x57f889(0xf8),_0xda42d8(0x15e),_0xda42d8(0x15b),_0xda42d8(0x148)],'cau':[_0xda42d8(0x184),'Cậu\x20là\x20người\x20con\x20gái\x20đáng\x20yêu\x20và\x20dễ\x20thương\x20nhất\x20mà\x20tớ\x20từng\x20gặp!',_0x57f889(0xd2),_0xda42d8(0x146),_0xda42d8(0x16c),_0x57f889(0xfc)]},params=new URLSearchParams(window[_0xda42d8(0x174)][_0xda42d8(0x16f)]),dataParam=params[_0xda42d8(0x17f)]('id');if(dataParam)try{const n=decodeURIComponent(escape(atob(dataParam))),t=JSON[_0xda42d8(0x179)](n);if(t[_0xda42d8(0x157)]){const n=document[_0xda42d8(0x14f)](_0xda42d8(0x14d));n&&(n[_0x57f889(0xef)]=t[_0xda42d8(0x157)]);}if(t[_0xda42d8(0x173)]&&textGroups[t[_0x57f889(0xee)]]){const n=textGroups[t[_0xda42d8(0x173)]],a=t[_0xda42d8(0x15f)]&&t[_0xda42d8(0x15f)][_0xda42d8(0x14a)]?t[_0x57f889(0xe7)]:[_0xda42d8(0x14e)];messages=n[_0xda42d8(0x163)]((_0x5d21cb,_0x5e0eb5)=>({'img':a[_0x5e0eb5%a[_0xda42d8(0x14a)]],'text':_0x5d21cb}));}}catch(_0x51357d){}
+        function createHeart() {
+    const container = document.querySelector(".hearts-container");
+
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+
+    container.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 300);
+
+document.addEventListener("click", function () {
+    const music = document.getElementById("player");
+    music.play();
+});
+    </script>
+
+<div class="hearts-container"></div>
+
+
+<img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 79.5111vw; width: 43.0587px; transform-origin: center bottom; pointer-events: none; transform: rotate(4.68884deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 30.764vw; width: 78.2994px; transform-origin: center bottom; pointer-events: none; transform: rotate(2.42619deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 51.1729vw; width: 42.6327px; transform-origin: center bottom; pointer-events: none; transform: rotate(8.99484deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 5.36046vw; width: 41.2486px; transform-origin: center bottom; pointer-events: none; transform: rotate(-3.16133deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 27.6342vw; width: 41.6209px; transform-origin: center bottom; pointer-events: none; transform: rotate(10.3831deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 7.81563vw; width: 57.5524px; transform-origin: center bottom; pointer-events: none; transform: rotate(-4.26844deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 28.991vw; width: 57.8366px; transform-origin: center bottom; pointer-events: none; transform: rotate(-2.11487deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 0.0733064vw; width: 62.3556px; transform-origin: center bottom; pointer-events: none; transform: rotate(-8.26641deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 12.4557vw; width: 43.307px; transform-origin: center bottom; pointer-events: none; transform: rotate(6.03412deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 90.0862vw; width: 73.7245px; transform-origin: center bottom; pointer-events: none; transform: rotate(-3.58801deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 63.3859vw; width: 61.4968px; transform-origin: center bottom; pointer-events: none; transform: rotate(10.9744deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 52.9171vw; width: 55.075px; transform-origin: center bottom; pointer-events: none; transform: rotate(-9.04495deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 95.9395vw; width: 62.7636px; transform-origin: center bottom; pointer-events: none; transform: rotate(6.7218deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 2.2793vw; width: 58.8577px; transform-origin: center bottom; pointer-events: none; transform: rotate(4.03055deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 47.1717vw; width: 66.3501px; transform-origin: center bottom; pointer-events: none; transform: rotate(-9.42332deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 39.0362vw; width: 76.2919px; transform-origin: center bottom; pointer-events: none; transform: rotate(2.10021deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 59.768vw; width: 79.872px; transform-origin: center bottom; pointer-events: none; transform: rotate(1.84289deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 1.92415vw; width: 63.5491px; transform-origin: center bottom; pointer-events: none; transform: rotate(-6.17473deg);"><img src="./assets/hoa1.png" class="flower" style="position: fixed; bottom: 0px; left: 35.3637vw; width: 40.9579px; transform-origin: center bottom; pointer-events: none; transform: rotate(1.88836deg);"></body></html>
