@@ -1,0 +1,1043 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 15">
+<meta name="Originator" content="Microsoft Word 15">
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+    @page { size: A4; margin: 2cm 2.5cm 2cm 2.5cm; }
+    body { font-family: 'Times New Roman', serif; font-size: 13pt; line-height: 1.6; color: #222; }
+    h1 { font-size: 22pt; color: #001C30; text-align: center; font-weight: bold; margin-top: 30pt; margin-bottom: 10pt; border-bottom: 3px double #001C30; padding-bottom: 10pt; }
+    h2 { font-size: 16pt; color: #001C30; font-weight: bold; margin-top: 24pt; margin-bottom: 8pt; border-bottom: 2px solid #DAA520; padding-bottom: 4pt; }
+    h3 { font-size: 14pt; color: #003153; font-weight: bold; margin-top: 16pt; margin-bottom: 6pt; }
+    h4 { font-size: 12pt; color: #444; font-weight: bold; margin-top: 10pt; margin-bottom: 4pt; }
+    p { margin: 4pt 0; text-align: justify; }
+    table { border-collapse: collapse; width: 100%; margin: 8pt 0 14pt 0; font-size: 11pt; }
+    th { background-color: #001C30; color: #fff; font-weight: bold; padding: 6pt 8pt; text-align: left; border: 1px solid #001C30; }
+    td { padding: 5pt 8pt; border: 1px solid #ccc; vertical-align: top; }
+    tr:nth-child(even) td { background-color: #f8f9fa; }
+    .code { font-family: 'Courier New', monospace; font-size: 10pt; background: #f5f5f5; border: 1px solid #ddd; border-left: 4px solid #001C30; padding: 6pt 10pt; margin: 6pt 0; white-space: pre-wrap; }
+    .method { font-family: 'Courier New', monospace; font-size: 11pt; background: #eef2ff; padding: 4pt 8pt; border: 1px solid #c7d2fe; margin: 4pt 0; color: #1e40af; font-weight: bold; }
+    .note { background: #fffbeb; border: 1px solid #fbbf24; border-left: 4px solid #f59e0b; padding: 8pt 12pt; margin: 8pt 0; font-size: 11pt; }
+    .info { background: #eff6ff; border: 1px solid #93c5fd; border-left: 4px solid #3b82f6; padding: 8pt 12pt; margin: 8pt 0; font-size: 11pt; }
+    .warn { background: #fef2f2; border: 1px solid #fca5a5; border-left: 4px solid #ef4444; padding: 8pt 12pt; margin: 8pt 0; font-size: 11pt; }
+    ul { margin: 4pt 0 8pt 20pt; }
+    li { margin: 3pt 0; }
+    .cover-title { font-size: 28pt; color: #001C30; text-align: center; font-weight: bold; margin-top: 140pt; }
+    .cover-sub { font-size: 16pt; color: #555; text-align: center; margin: 12pt 0 40pt; }
+    .cover-info { font-size: 13pt; text-align: center; color: #444; margin: 6pt 0; }
+    .cover-line { border-top: 3px solid #DAA520; width: 200px; margin: 24pt auto; }
+    .pb { page-break-before: always; }
+    .footer { font-size: 9pt; color: #999; text-align: center; margin-top: 20pt; border-top: 1px solid #eee; padding-top: 6pt; }
+</style>
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║                    TRANG BÌA                                ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div style="text-align:center; margin-top:80pt;">
+    <p style="font-size:14pt; color:#888; letter-spacing:2pt; text-align:center;">ĐỒ ÁN TRIỂN KHAI</p>
+    <div class="cover-line"></div>
+    <p class="cover-title">TÀI LIỆU CHI TIẾT<br>CÁC CHỨC NĂNG HỆ THỐNG</p>
+    <p class="cover-sub">CLK APPLE STORE — Website Thương Mại Điện Tử</p>
+    <div class="cover-line"></div>
+    <br><br><br>
+    <p class="cover-info"><b>Tên dự án:</b> CLK Apple Store (mobileclk_store)</p>
+    <p class="cover-info"><b>Công nghệ:</b> PHP 8.1 + MySQL (MariaDB) + jQuery + Vanilla CSS</p>
+    <p class="cover-info"><b>Nền tảng:</b> XAMPP (Apache + MySQL)</p>
+    <p class="cover-info"><b>Database:</b> mobileclk_store</p>
+    <p class="cover-info"><b>Ngày tạo tài liệu:</b> 05/06/2026</p>
+    <br><br><br><br>
+    <p style="font-size:11pt; color:#aaa; text-align:center;">Tài liệu được tạo tự động — Phiên bản 1.0</p>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║                    MỤC LỤC                                  ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>MỤC LỤC</h1>
+
+<div style="padding: 12pt 0;">
+<p style="margin:8pt 0;"><b>Phần 1.</b> Tổng quan hệ thống</p>
+<p style="margin:8pt 0;"><b>Phần 2.</b> Cấu trúc cơ sở dữ liệu (10 bảng)</p>
+<p style="margin:8pt 0;"><b>Phần 3.</b> Các Class PHP — Business Logic</p>
+<p style="margin:4pt 0 4pt 20pt;">3.1. DBConnect — Kết nối Database</p>
+<p style="margin:4pt 0 4pt 20pt;">3.2. Account — Quản lý Tài khoản</p>
+<p style="margin:4pt 0 4pt 20pt;">3.3. Product — Quản lý Sản phẩm &amp; Đánh giá</p>
+<p style="margin:4pt 0 4pt 20pt;">3.4. Cart — Giỏ hàng</p>
+<p style="margin:4pt 0 4pt 20pt;">3.5. Wishlist — Danh sách Yêu thích</p>
+<p style="margin:4pt 0 4pt 20pt;">3.6. Manage — Quản lý Sản phẩm (Admin)</p>
+<p style="margin:4pt 0 4pt 20pt;">3.7. Order — Quản lý Đơn hàng</p>
+<p style="margin:4pt 0 4pt 20pt;">3.8. OrderItem — Chi tiết Đơn hàng</p>
+<p style="margin:4pt 0 4pt 20pt;">3.9. ReturnRequest — Yêu cầu Đổi trả</p>
+<p style="margin:4pt 0 4pt 20pt;">3.10. OrderController — Controller Đơn hàng (User)</p>
+<p style="margin:4pt 0 4pt 20pt;">3.11. AdminOrderController — Controller Đơn hàng (Admin)</p>
+<p style="margin:8pt 0;"><b>Phần 4.</b> API Endpoints (AJAX)</p>
+<p style="margin:4pt 0 4pt 20pt;">4.1. api/cart.php — API Giỏ hàng</p>
+<p style="margin:4pt 0 4pt 20pt;">4.2. api/wishlist.php — API Yêu thích</p>
+<p style="margin:4pt 0 4pt 20pt;">4.3. api/apply_coupon.php — API Mã giảm giá</p>
+<p style="margin:4pt 0 4pt 20pt;">4.4. api/admin_order_api.php — API Quản lý đơn (Admin)</p>
+<p style="margin:4pt 0 4pt 20pt;">4.5. api/products.php — API Lọc sản phẩm</p>
+<p style="margin:4pt 0 4pt 20pt;">4.6. api/category_ajax.php — API Danh mục + Phân trang</p>
+<p style="margin:4pt 0 4pt 20pt;">4.7. api/live_search.php — API Tìm kiếm gợi ý</p>
+<p style="margin:4pt 0 4pt 20pt;">4.8. api/compare_data.php — API So sánh sản phẩm</p>
+<p style="margin:4pt 0 4pt 20pt;">4.9. api/chatbot_api.php — API Chatbot AI</p>
+<p style="margin:8pt 0;"><b>Phần 5.</b> Các trang Frontend (Người dùng)</p>
+<p style="margin:8pt 0;"><b>Phần 6.</b> Các trang Admin Panel</p>
+<p style="margin:8pt 0;"><b>Phần 7.</b> JavaScript — Xử lý phía Client</p>
+<p style="margin:8pt 0;"><b>Phần 8.</b> Helper Functions &amp; Khởi tạo hệ thống</p>
+</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              PHẦN 1: TỔNG QUAN HỆ THỐNG                     ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>PHẦN 1: TỔNG QUAN HỆ THỐNG</h1>
+
+<h2>1.1. Giới thiệu dự án</h2>
+<p><b>CLK Apple Store</b> là website thương mại điện tử chuyên bán điện thoại di động (iPhone, Samsung, Xiaomi, Oppo) và phụ kiện (tai nghe, sạc, ốp lưng, pin dự phòng). Hệ thống được xây dựng trên nền tảng PHP thuần (không framework) kết hợp MySQL, jQuery và CSS tùy chỉnh.</p>
+
+<h2>1.2. Kiến trúc tổng quan</h2>
+<div class="code">[Browser Request]
+       ↓
+[*.php pages] → include func/header.php + func/footer.php (layout)
+       ↓
+[func/*.php classes] → xử lý business logic
+       ↓
+[func/Order.php, OrderItem.php, ReturnRequest.php] → data models
+       ↓
+[func/OrderController.php, AdminOrderController.php] → controllers
+       ↓
+[func/DBConnect.php] → MySQL (mobileclk_store)
+       ↓
+[libs/*.php partials] → render UI components</div>
+
+<h2>1.3. Phân quyền người dùng</h2>
+<table>
+<tr><th>Vai trò</th><th>Quyền hạn</th><th>Giá trị privilege</th></tr>
+<tr><td><b>Guest (Khách)</b></td><td>Xem sản phẩm, tìm kiếm, so sánh sản phẩm, dùng chatbot</td><td>Chưa đăng nhập</td></tr>
+<tr><td><b>User (Người dùng)</b></td><td>Mua hàng, giỏ hàng, wishlist, đặt đơn, xem lịch sử, hủy đơn, đổi trả, đánh giá sản phẩm, quản lý profile</td><td>privilege = 0</td></tr>
+<tr><td><b>Admin (Quản trị)</b></td><td>Quản lý sản phẩm (CRUD), quản lý đơn hàng (cập nhật trạng thái), quản lý người dùng, quản lý danh mục/hãng, quản lý mã giảm giá, xem thống kê</td><td>privilege = 1</td></tr>
+</table>
+
+<h2>1.4. Cấu trúc thư mục</h2>
+<div class="code">clkshop/
+├── index.php               → Trang chủ
+├── login.php / register.php → Đăng nhập / Đăng ký
+├── logout.php              → Đăng xuất
+├── products.php            → Danh sách sản phẩm (theo brand)
+├── details.php             → Chi tiết sản phẩm
+├── search.php              → Tìm kiếm sản phẩm
+├── compare.php             → So sánh sản phẩm (tối đa 3)
+├── cart.php                → Giỏ hàng
+├── checkout.php            → Thanh toán
+├── history.php             → Lịch sử đơn hàng
+├── order_detail.php        → Chi tiết 1 đơn hàng
+├── cancel_order.php        → Hủy đơn hàng
+├── return_request.php      → Yêu cầu đổi trả
+├── wishlist.php            → Danh sách yêu thích
+├── profile.php             → Quản lý hồ sơ cá nhân
+├── script.js               → JavaScript chính (7.6KB)
+├── style.css               → CSS chính (75KB)
+├── mobileclk_store.sql     → File dump database
+│
+├── func/                   → Business Logic (Core)
+│   ├── DBConnect.php       → Kết nối MySQL
+│   ├── Account.php         → Logic tài khoản
+│   ├── Product.php         → Logic sản phẩm + đánh giá (17.8KB)
+│   ├── Cart.php            → Logic giỏ hàng
+│   ├── Wishlist.php        → Logic yêu thích
+│   ├── Manage.php          → Logic quản lý sản phẩm (Admin)
+│   ├── Order.php           → Model đơn hàng
+│   ├── OrderItem.php       → Model chi tiết đơn
+│   ├── ReturnRequest.php   → Model đổi trả
+│   ├── OrderController.php → Controller đơn hàng (User)
+│   ├── AdminOrderController.php → Controller đơn hàng (Admin)
+│   ├── functions.php       → Khởi tạo + helper functions
+│   ├── header.php          → Header layout chính
+│   └── footer.php          → Footer layout chính
+│
+├── api/                    → AJAX Endpoints
+│   ├── cart.php            → API giỏ hàng
+│   ├── wishlist.php        → API yêu thích
+│   ├── apply_coupon.php    → API mã giảm giá
+│   ├── admin_order_api.php → API đơn hàng (Admin)
+│   ├── products.php        → API lọc sản phẩm
+│   ├── category_ajax.php   → API danh mục + phân trang
+│   ├── live_search.php     → API tìm kiếm gợi ý
+│   ├── compare_data.php    → API so sánh sản phẩm
+│   └── chatbot_api.php     → API chatbot AI (Gemini)
+│
+├── admin/                  → Giao diện Admin Panel
+│   ├── header.php / footer.php → Layout admin
+│   ├── dashboard.php       → Thống kê tổng quan
+│   ├── products.php        → Quản lý sản phẩm
+│   ├── orders.php          → Quản lý đơn hàng
+│   ├── account.php         → Quản lý người dùng
+│   ├── categories.php      → Quản lý danh mục/hãng
+│   └── coupons.php         → Quản lý mã giảm giá
+│
+├── libs/                   → UI Components (Partials)
+│   ├── banner.php          → Banner slider trang chủ
+│   ├── featured.php        → Sản phẩm nổi bật
+│   ├── new-phones.php      → Điện thoại mới nhất
+│   ├── accessory.php       → Phụ kiện chính hãng
+│   ├── ads.php             → Banner quảng cáo
+│   ├── news.php            → Tin tức
+│   ├── product-details.php → Chi tiết sản phẩm (46KB)
+│   ├── category-page.php   → Trang danh mục
+│   ├── cart-list.php       → Danh sách giỏ hàng
+│   ├── cart-empty.php      → Giỏ hàng rỗng
+│   ├── wishlist-list.php   → Danh sách yêu thích
+│   ├── wishlist-empty.php  → Yêu thích rỗng
+│   ├── login-form.php      → Form đăng nhập
+│   ├── register-form.php   → Form đăng ký
+│   ├── chatbot.php         → Widget chatbot
+│   └── dashboard-stats.php → Thống kê admin (24KB)
+│
+└── assets/                 → Static Files
+    ├── products/           → Ảnh sản phẩm
+    ├── banner/             → Ảnh banner
+    ├── avatars/            → Ảnh avatar người dùng
+    └── js/                 → Thư viện JS bổ sung</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              PHẦN 2: CƠ SỞ DỮ LIỆU                         ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>PHẦN 2: CẤU TRÚC CƠ SỞ DỮ LIỆU</h1>
+
+<p>Database <b>mobileclk_store</b> gồm <b>10 bảng</b> chính, sử dụng engine InnoDB với charset utf8mb4.</p>
+
+<h2>2.1. Bảng <code>account</code> — Tài khoản đăng nhập</h2>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT UNSIGNED, PK, AUTO_INCREMENT</td><td>ID tài khoản</td></tr>
+<tr><td>username</td><td>VARCHAR(30)</td><td>Tên đăng nhập</td></tr>
+<tr><td>password</td><td>VARCHAR(30)</td><td>Mật khẩu (plaintext)</td></tr>
+<tr><td>email</td><td>VARCHAR(100)</td><td>Email</td></tr>
+<tr><td>privilege</td><td>TINYINT(1), DEFAULT 0</td><td>Quyền: 0 = User, 1 = Admin</td></tr>
+</table>
+
+<h2>2.2. Bảng <code>user</code> — Thông tin cá nhân</h2>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT UNSIGNED, PK</td><td>ID (cùng với account.id)</td></tr>
+<tr><td>fullname</td><td>VARCHAR(30)</td><td>Họ tên đầy đủ</td></tr>
+<tr><td>phone</td><td>VARCHAR(15)</td><td>Số điện thoại</td></tr>
+<tr><td>avatar</td><td>VARCHAR(100)</td><td>Tên file ảnh avatar</td></tr>
+<tr><td>city</td><td>VARCHAR(30)</td><td>Thành phố</td></tr>
+<tr><td>gender</td><td>TINYINT(3)</td><td>Giới tính (0/1)</td></tr>
+<tr><td>address</td><td>VARCHAR(100)</td><td>Địa chỉ chi tiết</td></tr>
+</table>
+
+<h2>2.3. Bảng <code>product</code> — Sản phẩm</h2>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT UNSIGNED, PK, AUTO_INCREMENT</td><td>ID sản phẩm</td></tr>
+<tr><td>name</td><td>VARCHAR(100)</td><td>Tên sản phẩm</td></tr>
+<tr><td>brand</td><td>INT UNSIGNED, FK → manufacturer.id</td><td>ID hãng sản xuất</td></tr>
+<tr><td>price</td><td>DOUBLE(10,2) UNSIGNED</td><td>Giá bán (VNĐ)</td></tr>
+<tr><td>image</td><td>VARCHAR(100)</td><td>Đường dẫn ảnh sản phẩm</td></tr>
+<tr><td>description</td><td>TEXT</td><td>Mô tả sản phẩm</td></tr>
+<tr><td>stock</td><td>INT, DEFAULT 100</td><td>Số lượng tồn kho</td></tr>
+<tr><td>category</td><td>VARCHAR(30), DEFAULT 'phone'</td><td>Danh mục: phone/headphone/charger/case/powerbank</td></tr>
+</table>
+
+<h2>2.4. Bảng <code>manufacturer</code> — Hãng sản xuất</h2>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT UNSIGNED, PK, AUTO_INCREMENT</td><td>ID hãng</td></tr>
+<tr><td>brand</td><td>VARCHAR(30)</td><td>Tên hãng (Apple, Samsung, Redmi, Oppo)</td></tr>
+<tr><td>company</td><td>VARCHAR(50)</td><td>Tên công ty đầy đủ</td></tr>
+<tr><td>headquarter</td><td>VARCHAR(30)</td><td>Trụ sở (USA, South Korea, China)</td></tr>
+</table>
+
+<h2>2.5. Bảng <code>category</code> — Danh mục sản phẩm</h2>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT UNSIGNED, PK, AUTO_INCREMENT</td><td>ID danh mục</td></tr>
+<tr><td>slug</td><td>VARCHAR(30), UNIQUE</td><td>Slug URL (phone, headphone, charger...)</td></tr>
+<tr><td>name</td><td>VARCHAR(100)</td><td>Tên hiển thị tiếng Việt</td></tr>
+<tr><td>icon</td><td>VARCHAR(50)</td><td>Class icon FontAwesome</td></tr>
+</table>
+
+<h2>2.6. Bảng <code>cart</code> — Giỏ hàng</h2>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT UNSIGNED, PK, AUTO_INCREMENT</td><td>ID bản ghi</td></tr>
+<tr><td>item_id</td><td>INT UNSIGNED</td><td>ID sản phẩm</td></tr>
+<tr><td>user_id</td><td>INT UNSIGNED</td><td>ID người dùng</td></tr>
+<tr><td>quantity</td><td>INT, DEFAULT 1</td><td>Số lượng</td></tr>
+</table>
+
+<h2>2.7. Bảng <code>wishlist</code> — Danh sách yêu thích</h2>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT UNSIGNED, PK, AUTO_INCREMENT</td><td>ID bản ghi</td></tr>
+<tr><td>item_id</td><td>INT UNSIGNED, FK → product.id</td><td>ID sản phẩm</td></tr>
+<tr><td>user_id</td><td>INT UNSIGNED, FK → account.id</td><td>ID người dùng</td></tr>
+</table>
+
+<h2>2.8. Bảng <code>orders</code> — Đơn hàng</h2>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT UNSIGNED, PK, AUTO_INCREMENT</td><td>Mã đơn hàng</td></tr>
+<tr><td>user_id</td><td>INT UNSIGNED, FK → user.id</td><td>ID người đặt</td></tr>
+<tr><td>order_date</td><td>DATETIME, DEFAULT NOW()</td><td>Ngày đặt hàng</td></tr>
+<tr><td>status</td><td>VARCHAR(50), DEFAULT 'pending'</td><td>Trạng thái: pending → confirmed → packing → shipping → delivered / cancelled / returned</td></tr>
+<tr><td>total_amount</td><td>DOUBLE(10,2) UNSIGNED</td><td>Tổng tiền thanh toán</td></tr>
+<tr><td>discount_amount</td><td>INT, DEFAULT 0</td><td>Số tiền giảm giá</td></tr>
+<tr><td>shipping_address</td><td>VARCHAR(255)</td><td>Địa chỉ giao hàng</td></tr>
+<tr><td>phone</td><td>VARCHAR(15)</td><td>SĐT liên hệ</td></tr>
+<tr><td>payment_method</td><td>VARCHAR(50), DEFAULT 'cod'</td><td>Phương thức: cod / momo / bank</td></tr>
+</table>
+
+<h2>2.9. Bảng <code>order_detail</code> — Chi tiết đơn hàng</h2>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT UNSIGNED, PK, AUTO_INCREMENT</td><td>ID</td></tr>
+<tr><td>order_id</td><td>INT UNSIGNED, FK → orders.id</td><td>Mã đơn hàng</td></tr>
+<tr><td>product_id</td><td>INT UNSIGNED, FK → product.id</td><td>Mã sản phẩm</td></tr>
+<tr><td>quantity</td><td>INT</td><td>Số lượng mua</td></tr>
+<tr><td>price</td><td>DOUBLE(10,2)</td><td>Giá tại thời điểm mua</td></tr>
+</table>
+
+<h2>2.10. Các bảng phụ trợ</h2>
+
+<h3>a) Bảng <code>reviews</code> — Đánh giá sản phẩm</h3>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT, PK, AUTO_INCREMENT</td><td>ID đánh giá</td></tr>
+<tr><td>product_id</td><td>INT</td><td>Sản phẩm được đánh giá</td></tr>
+<tr><td>user_id</td><td>INT</td><td>Người đánh giá</td></tr>
+<tr><td>rating</td><td>INT(1)</td><td>Số sao (1-5)</td></tr>
+<tr><td>comment</td><td>TEXT</td><td>Nội dung đánh giá</td></tr>
+<tr><td>created_at</td><td>TIMESTAMP, DEFAULT NOW()</td><td>Thời gian</td></tr>
+</table>
+
+<h3>b) Bảng <code>coupons</code> — Mã giảm giá</h3>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id / code</td><td>INT PK / VARCHAR(50) UNIQUE</td><td>ID và mã coupon</td></tr>
+<tr><td>discount_value</td><td>INT</td><td>Giá trị giảm</td></tr>
+<tr><td>discount_type</td><td>ENUM('percent','fixed')</td><td>Loại: phần trăm hoặc số tiền cố định</td></tr>
+<tr><td>min_order_value</td><td>INT, DEFAULT 0</td><td>Giá trị đơn hàng tối thiểu</td></tr>
+<tr><td>max_discount</td><td>INT, DEFAULT 0</td><td>Giảm tối đa (cho percent)</td></tr>
+<tr><td>usage_limit / used_count</td><td>INT</td><td>Giới hạn / đã dùng</td></tr>
+<tr><td>valid_from / valid_until</td><td>DATETIME</td><td>Thời hạn hiệu lực</td></tr>
+<tr><td>status</td><td>TINYINT(1), DEFAULT 1</td><td>1 = hoạt động, 0 = khóa</td></tr>
+</table>
+
+<h3>c) Bảng <code>return_request</code> — Yêu cầu đổi trả</h3>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT, PK, AUTO_INCREMENT</td><td>ID yêu cầu</td></tr>
+<tr><td>order_id</td><td>INT</td><td>Đơn hàng cần đổi trả</td></tr>
+<tr><td>user_id</td><td>INT</td><td>Người yêu cầu</td></tr>
+<tr><td>reason</td><td>TEXT</td><td>Lý do đổi trả</td></tr>
+<tr><td>status</td><td>VARCHAR(50), DEFAULT 'pending'</td><td>Trạng thái: pending / approved / rejected</td></tr>
+<tr><td>created_at</td><td>DATETIME, DEFAULT NOW()</td><td>Thời gian tạo</td></tr>
+</table>
+
+<h3>d) Bảng <code>product_variant</code> — Biến thể sản phẩm (RAM/ROM)</h3>
+<table>
+<tr><th>Cột</th><th>Kiểu dữ liệu</th><th>Mô tả</th></tr>
+<tr><td>id</td><td>INT UNSIGNED, PK</td><td>ID biến thể</td></tr>
+<tr><td>product_id</td><td>INT UNSIGNED, FK → product.id</td><td>Sản phẩm gốc</td></tr>
+<tr><td>ram</td><td>VARCHAR(10)</td><td>Dung lượng RAM (4GB, 8GB...)</td></tr>
+<tr><td>rom</td><td>VARCHAR(10)</td><td>Bộ nhớ ROM (64GB, 256GB...)</td></tr>
+<tr><td>price</td><td>DOUBLE(10,2) UNSIGNED</td><td>Giá của biến thể này</td></tr>
+</table>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              PHẦN 3: CÁC CLASS PHP                           ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>PHẦN 3: CÁC CLASS PHP — BUSINESS LOGIC</h1>
+
+<!-- ──── 3.1 DBConnect ──── -->
+<h2>3.1. Class DBConnect (func/DBConnect.php)</h2>
+<p><b>Mục đích:</b> Kết nối tới MySQL database, quản lý connection lifecycle.</p>
+
+<table>
+<tr><th>Phương thức</th><th>Mô tả</th></tr>
+<tr><td><code>__construct()</code></td><td>Kết nối tới MySQL (localhost, root, rỗng, mobileclk_store). Set charset utf8mb4. Nếu kết nối thất bại → die() kèm lỗi.</td></tr>
+<tr><td><code>__destruct()</code></td><td>Tự động đóng connection khi object bị hủy.</td></tr>
+<tr><td><code>closeConnection()</code></td><td>Đóng connection MySQL nếu đang mở, set $con = null.</td></tr>
+</table>
+
+<div class="info"><b>Thuộc tính public:</b> <code>$con</code> — đối tượng mysqli connection, được sử dụng bởi tất cả class khác.</div>
+
+
+<!-- ──── 3.2 Account ──── -->
+<h2>3.2. Class Account (func/Account.php)</h2>
+<p><b>Mục đích:</b> Xử lý đăng nhập, đăng ký, đăng xuất, CRUD tài khoản.</p>
+
+<table>
+<tr><th>Phương thức</th><th>Tham số</th><th>Mô tả chi tiết</th></tr>
+<tr>
+    <td><code>getData($table)</code></td>
+    <td>$table: tên bảng (default 'account')</td>
+    <td>Lấy tất cả bản ghi từ bảng account. Trả về mảng associative chứa toàn bộ tài khoản.</td>
+</tr>
+<tr>
+    <td><code>getAccount($id, $table)</code></td>
+    <td>$id: ID tài khoản</td>
+    <td>Lấy thông tin 1 tài khoản theo ID. Trả về mảng associative hoặc rỗng.</td>
+</tr>
+<tr>
+    <td><code>login($username, $password)</code></td>
+    <td>$username, $password: thông tin đăng nhập</td>
+    <td><b>Xác thực đăng nhập:</b>
+        <ul>
+            <li>Truy vấn DB kiểm tra username + password</li>
+            <li>Nếu đúng: Set SESSION (logged, username, user_id, privilege) + COOKIE (user_id, user_type)</li>
+            <li>Admin (privilege=1) → redirect admin/products.php</li>
+            <li>User thường → redirect index.php hoặc trang redirect được chỉ định</li>
+            <li>Sai → hiển thị alert JavaScript</li>
+        </ul>
+    </td>
+</tr>
+<tr>
+    <td><code>logout()</code></td>
+    <td>Không có</td>
+    <td>Đặt SESSION['logged'] = false, xóa cookie user_id và user_type, redirect về trang hiện tại.</td>
+</tr>
+<tr>
+    <td><code>register(...)</code></td>
+    <td>$fullname, $username, $password, $phone, $avatar, $email, $city, $gender, $address</td>
+    <td><b>Đăng ký tài khoản mới:</b>
+        <ul>
+            <li>Insert vào bảng <code>account</code> (username, password, email)</li>
+            <li>Insert vào bảng <code>user</code> (fullname, phone, avatar, city, gender, address)</li>
+            <li>Nếu 1 trong 2 thất bại → rollback bảng kia</li>
+            <li>Thành công → redirect lại trang hiện tại</li>
+        </ul>
+    </td>
+</tr>
+<tr>
+    <td><code>deleteAcc($id)</code></td>
+    <td>$id: ID tài khoản</td>
+    <td>Xóa tài khoản: xóa cả bảng <code>user</code> và bảng <code>account</code> theo ID.</td>
+</tr>
+<tr>
+    <td><code>updateAcc($id, $username, $password, $email, $privilege)</code></td>
+    <td>Tất cả thông tin tài khoản</td>
+    <td>Cập nhật thông tin tài khoản. Sử dụng real_escape_string để chống SQL injection.</td>
+</tr>
+<tr>
+    <td><code>insertAcc($username, $password, $email, $privilege)</code></td>
+    <td>Thông tin tài khoản mới</td>
+    <td><b>Thêm tài khoản từ Admin panel:</b> Insert vào account + tự động tạo bản ghi user tương ứng cùng ID.</td>
+</tr>
+</table>
+
+
+<!-- ──── 3.3 Product ──── -->
+<h2>3.3. Class Product (func/Product.php)</h2>
+<p><b>Mục đích:</b> Xử lý tất cả logic liên quan đến sản phẩm, đánh giá (review), và biến thể sản phẩm. Đây là class lớn nhất (17.8KB, 17 phương thức).</p>
+
+<table>
+<tr><th>#</th><th>Phương thức</th><th>Mô tả chi tiết</th></tr>
+<tr><td>1</td><td><code>getData($table)</code></td><td>Lấy toàn bộ sản phẩm từ bảng product. Trả về mảng associative.</td></tr>
+<tr><td>2</td><td><code>getProduct($id)</code></td><td>Lấy thông tin 1 sản phẩm cụ thể theo ID.</td></tr>
+<tr><td>3</td><td><code>getProductsByCategory($cat, $page, $limit, $sort)</code></td><td><b>Lấy sản phẩm theo danh mục phụ kiện</b> (headphone/charger/case/powerbank). Hỗ trợ phân trang và sắp xếp (price_asc, price_desc, name_asc, newest). JOIN với manufacturer để lấy brand_name.</td></tr>
+<tr><td>3b</td><td><code>countByCategory($cat)</code></td><td>Đếm tổng số sản phẩm theo category. Dùng cho phân trang.</td></tr>
+<tr><td>4</td><td><code>searchProduct($keyword)</code></td><td><b>Tìm kiếm sản phẩm:</b> Tìm theo tên sản phẩm, tên hãng, hoặc tên category. Sử dụng LIKE %keyword%. JOIN manufacturer.</td></tr>
+<tr><td>5</td><td><code>getRelatedProducts($id, $brand, $limit)</code></td><td>Lấy sản phẩm liên quan cùng hãng (trừ sản phẩm hiện tại). ORDER BY RAND(), mặc định 4 sản phẩm.</td></tr>
+<tr><td>6</td><td><code>getReviews($product_id)</code></td><td><b>Lấy đánh giá:</b> JOIN với bảng user để lấy fullname + avatar. Sắp xếp mới nhất trước.</td></tr>
+<tr><td>7</td><td><code>addReview($product_id, $user_id, $rating, $comment)</code></td><td>Thêm đánh giá mới. Kiểm tra comment không rỗng. Sử dụng real_escape_string cho comment.</td></tr>
+<tr><td>8</td><td><code>deleteReview($review_id, $user_id)</code></td><td>Xóa đánh giá — chỉ cho phép xóa khi khớp cả review_id VÀ user_id (chống xóa lẫn nhau).</td></tr>
+<tr><td>9</td><td><code>getReviewStats($product_id)</code></td><td><b>Thống kê sao:</b> Trả về mảng [average, total, stars[1-5]] — trung bình sao, tổng đánh giá, số lượng theo từng mức sao.</td></tr>
+<tr><td>10</td><td><code>getVariants($product_id)</code></td><td>Lấy biến thể RAM/ROM từ bảng product_variant. Sắp xếp theo giá tăng dần.</td></tr>
+<tr><td>11</td><td><code>getRelatedByBrand($product_id, $brand_id, $limit)</code></td><td>Lấy sản phẩm liên quan theo brand_id (integer), JOIN manufacturer. Dùng RAND().</td></tr>
+<tr><td>12</td><td><code>hasPurchased($user_id, $product_id)</code></td><td><b>Kiểm tra quyền đánh giá:</b> User đã mua VÀ đơn đã giao thành công (status = delivered/Đã giao/completed) mới được phép đánh giá.</td></tr>
+<tr><td>12b</td><td><code>hasBoughtButNotDelivered($user_id, $product_id)</code></td><td>Kiểm tra user đã đặt nhưng đơn chưa giao (pending/confirmed/packing/shipping). Dùng hiển thị thông báo "đang chờ giao".</td></tr>
+<tr><td>13</td><td><code>hasReviewed($user_id, $product_id)</code></td><td>Kiểm tra user đã đánh giá sản phẩm này chưa (chống spam — mỗi user chỉ đánh giá 1 lần).</td></tr>
+<tr><td>14</td><td><code>getByBrand($brand_id, $page, $limit, $sort)</code></td><td><b>Lấy sản phẩm theo hãng:</b> brand_id=0 → tất cả. Hỗ trợ phân trang (LIMIT/OFFSET), sắp xếp (whitelist chống injection). Giới hạn 1-50 sản phẩm/trang.</td></tr>
+<tr><td>15</td><td><code>countByBrand($brand_id)</code></td><td>Đếm tổng sản phẩm theo hãng. brand_id=0 → đếm tất cả.</td></tr>
+<tr><td>16</td><td><code>getBulkReviewStats(array $product_ids)</code></td><td><b>Thống kê review hàng loạt:</b> Lấy AVG(rating) và COUNT cho nhiều sản phẩm cùng lúc (chống N+1 query). Trả về mảng [product_id → [average, total]].</td></tr>
+<tr><td>17</td><td><code>getCrossSellProducts($current_category, $limit)</code></td><td><b>Gợi ý mua kèm (Cross-sell):</b> Nếu đang xem điện thoại → gợi ý phụ kiện. Nếu xem phụ kiện → gợi ý điện thoại hoặc phụ kiện khác. Chỉ lấy sản phẩm còn hàng (stock > 0).</td></tr>
+</table>
+
+
+<!-- ──── 3.4 Cart ──── -->
+<h2>3.4. Class Cart (func/Cart.php)</h2>
+<p><b>Mục đích:</b> Quản lý giỏ hàng — thêm, xóa, cập nhật số lượng, tính tổng tiền.</p>
+
+<table>
+<tr><th>#</th><th>Phương thức</th><th>Mô tả</th></tr>
+<tr><td>1</td><td><code>getCart($userid)</code></td><td>Lấy tất cả sản phẩm trong giỏ hàng của user. Dùng Prepared Statement. Luôn trả về mảng (tránh lỗi foreach).</td></tr>
+<tr><td>2</td><td><code>insertIntoCart($params, $table)</code></td><td>Insert dữ liệu vào bảng cart. Tự động build câu SQL từ mảng key-value. Sử dụng real_escape_string.</td></tr>
+<tr><td>3</td><td><code>addToCart($userid, $itemid, $qty, $ajax)</code></td><td><b>Thêm vào giỏ:</b> Kiểm tra sản phẩm đã tồn tại → cộng dồn số lượng (UPDATE quantity + $qty). Chưa có → INSERT mới. Hỗ trợ mode AJAX (trả true) hoặc mode form (redirect + toast).</td></tr>
+<tr><td>4</td><td><code>deleteCart($item_id, $table, $ajax)</code></td><td>Xóa sản phẩm khỏi giỏ theo item_id. Dùng Prepared Statement. Hỗ trợ AJAX mode.</td></tr>
+<tr><td>5</td><td><code>getSum($arr)</code></td><td>Tính tổng tiền từ mảng giá. Trả về số thô (format tiền ở giao diện bằng number_format).</td></tr>
+<tr><td>6</td><td><code>getCartId($cartArray)</code></td><td>Trích xuất mảng item_id từ dữ liệu giỏ hàng. Dùng để kiểm tra sản phẩm đã có trong giỏ chưa.</td></tr>
+<tr><td>7</td><td><code>updateCartQuantity($itemid, $userid, $qty)</code></td><td>Cập nhật số lượng sản phẩm trong giỏ. Dùng Prepared Statement. Phục vụ AJAX tăng/giảm số lượng.</td></tr>
+</table>
+
+
+<!-- ──── 3.5 Wishlist ──── -->
+<h2>3.5. Class Wishlist (func/Wishlist.php)</h2>
+<p><b>Mục đích:</b> Quản lý danh sách sản phẩm yêu thích.</p>
+
+<table>
+<tr><th>Phương thức</th><th>Mô tả</th></tr>
+<tr><td><code>getWishlist($userid)</code></td><td>Lấy danh sách yêu thích của user. Prepared Statement. Trả về mảng rỗng nếu không có.</td></tr>
+<tr><td><code>toggleWishlist($userid, $itemid, $ajax)</code></td><td><b>Toggle yêu thích:</b> Đã có → xóa (remove). Chưa có → thêm (add). AJAX mode trả về 'added'/'removed'. Form mode → set toast + redirect.</td></tr>
+<tr><td><code>deleteWishlist($userid, $itemid, $ajax)</code></td><td>Xóa sản phẩm khỏi wishlist. Prepared Statement. Hỗ trợ AJAX.</td></tr>
+<tr><td><code>getWishlistId($wishlistArray)</code></td><td>Trích xuất mảng item_id từ wishlist data.</td></tr>
+</table>
+
+
+<!-- ──── 3.6 Manage ──── -->
+<h2>3.6. Class Manage (func/Manage.php)</h2>
+<p><b>Mục đích:</b> Quản lý sản phẩm, hãng sản xuất, và danh mục (Admin CRUD).</p>
+
+<table>
+<tr><th>Phương thức</th><th>Mô tả</th></tr>
+<tr><td><code>getData()</code></td><td>Lấy tất cả sản phẩm JOIN manufacturer (lấy brand_name + origin).</td></tr>
+<tr><td><code>getBrands()</code></td><td>Lấy tất cả hãng sản xuất từ bảng manufacturer.</td></tr>
+<tr><td><code>getBrand($id)</code></td><td>Lấy 1 hãng theo ID.</td></tr>
+<tr><td><code>handleImage($image)</code></td><td><b>Upload ảnh sản phẩm:</b> Kiểm tra file size (max 2MB), cho phép JPG/PNG/GIF/WEBP. Tạo tên file an toàn (loại ký tự đặc biệt + timestamp). Di chuyển vào assets/products/. Trả về tên file (không phải full path).</td></tr>
+<tr><td><code>insertProduct($name, $brand, $price, $image, $category, $stock)</code></td><td><b>Thêm sản phẩm mới:</b> Upload ảnh qua handleImage(), INSERT vào DB. Hỗ trợ category (phone/headphone/charger...) và stock.</td></tr>
+<tr><td><code>updateProduct($id, $name, $brand, $price, $image, $category, $stock)</code></td><td><b>Cập nhật sản phẩm:</b> Chỉ cập nhật ảnh mới nếu có chọn file. Gộp tất cả thay đổi vào 1 câu UPDATE duy nhất.</td></tr>
+<tr><td><code>deleteProduct($id)</code></td><td>Xóa sản phẩm theo ID, reload trang sau khi xóa.</td></tr>
+<tr><td><code>insertBrand($name, $hq)</code></td><td>Thêm hãng sản xuất mới (brand, headquarter).</td></tr>
+<tr><td><code>updateBrand($id, $name, $hq)</code></td><td>Cập nhật thông tin hãng.</td></tr>
+<tr><td><code>deleteBrand($id)</code></td><td>Xóa hãng sản xuất theo ID.</td></tr>
+<tr><td><code>getCategories()</code></td><td>Lấy tất cả danh mục từ bảng category.</td></tr>
+<tr><td><code>insertCategory($slug, $name, $icon)</code></td><td>Thêm danh mục mới.</td></tr>
+<tr><td><code>updateCategory($id, $slug, $name, $icon)</code></td><td>Cập nhật danh mục.</td></tr>
+<tr><td><code>deleteCategory($id)</code></td><td>Xóa danh mục.</td></tr>
+</table>
+
+
+<!-- ──── 3.7 Order ──── -->
+<h2>3.7. Class Order (func/Order.php)</h2>
+<p><b>Mục đích:</b> Quản lý đơn hàng — CRUD, filter, phân trang, thống kê trạng thái.</p>
+
+<table>
+<tr><th>Phương thức</th><th>Mô tả</th></tr>
+<tr><td><code>getAllOrders(array $filters, int $page, int $limit)</code></td><td><b>[ADMIN] Lấy tất cả đơn hàng</b> với bộ lọc động: status, search (tên khách/mã đơn), date_from, date_to. JOIN bảng user. Phân trang LIMIT/OFFSET. Sử dụng Prepared Statement.</td></tr>
+<tr><td><code>countOrders(array $filters)</code></td><td>[ADMIN] Đếm tổng đơn hàng theo filter (dùng cho phân trang).</td></tr>
+<tr><td><code>getStatusCounts()</code></td><td>[ADMIN] Thống kê số lượng đơn theo từng trạng thái (GROUP BY status).</td></tr>
+<tr><td><code>getOrdersByUser(int $user_id)</code></td><td>[USER] Lấy tất cả đơn hàng của 1 user, sắp xếp mới nhất trước.</td></tr>
+<tr><td><code>getOrderDetail(int $order_id)</code></td><td>Lấy chi tiết 1 đơn hàng, JOIN user lấy fullname.</td></tr>
+<tr><td><code>updateStatus(int $order_id, string $status)</code></td><td><b>Cập nhật trạng thái đơn:</b>
+    <ul>
+        <li>Whitelist 7 trạng thái hợp lệ: pending, confirmed, packing, shipping, delivered, cancelled, returned</li>
+        <li>Chặn sửa khi đơn đã cancelled</li>
+        <li>Khi hủy/hoàn trả → tự động phục hồi tồn kho (UPDATE stock + quantity)</li>
+    </ul></td></tr>
+<tr><td><code>createOrder(int $user_id, float $total, string $address, string $payment)</code></td><td>Tạo đơn hàng mới với trạng thái 'pending'. Trả về order_id.</td></tr>
+</table>
+
+
+<!-- ──── 3.8-3.11 Các class phụ ──── -->
+<h2>3.8. Class OrderItem (func/OrderItem.php)</h2>
+<table>
+<tr><th>Phương thức</th><th>Mô tả</th></tr>
+<tr><td><code>getItemsByOrder($order_id)</code></td><td>Lấy chi tiết sản phẩm trong 1 đơn hàng. JOIN product lấy name + image.</td></tr>
+</table>
+
+<h2>3.9. Class ReturnRequest (func/ReturnRequest.php)</h2>
+<table>
+<tr><th>Phương thức</th><th>Mô tả</th></tr>
+<tr><td><code>create($order_id, $user_id, $reason)</code></td><td>Tạo yêu cầu đổi trả mới (status = 'pending').</td></tr>
+<tr><td><code>getAllRequests()</code></td><td>[ADMIN] Lấy tất cả yêu cầu đổi trả, JOIN user + orders.</td></tr>
+<tr><td><code>updateStatus($request_id, $status)</code></td><td>Cập nhật trạng thái yêu cầu (pending → approved/rejected).</td></tr>
+</table>
+
+<h2>3.10. Class OrderController (func/OrderController.php)</h2>
+<p><b>Mục đích:</b> Controller xử lý logic đơn hàng phía USER.</p>
+<table>
+<tr><th>Phương thức</th><th>Mô tả</th></tr>
+<tr><td><code>cancelOrder($order_id, $user_id)</code></td><td><b>Hủy đơn:</b> Chỉ cho phép khi đơn thuộc user VÀ status = 'pending'. Gọi Order::updateStatus('cancelled').</td></tr>
+<tr><td><code>requestReturn($order_id, $user_id, $reason)</code></td><td><b>Yêu cầu đổi trả:</b> Chỉ cho phép khi đơn thuộc user VÀ status = 'delivered'. Tạo bản ghi return_request.</td></tr>
+</table>
+
+<h2>3.11. Class AdminOrderController (func/AdminOrderController.php)</h2>
+<p><b>Mục đích:</b> Controller xử lý logic đơn hàng phía ADMIN.</p>
+<table>
+<tr><th>Phương thức</th><th>Mô tả</th></tr>
+<tr><td><code>updateOrderStatus($order_id, $status)</code></td><td>Cập nhật trạng thái đơn hàng qua AJAX. Gọi Order::updateStatus().</td></tr>
+<tr><td><code>handleReturnRequest($request_id, $status, $order_id)</code></td><td><b>Duyệt/từ chối đổi trả:</b> Cập nhật return_request status. Nếu approved → tự động chuyển đơn hàng sang 'returned'.</td></tr>
+</table>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              PHẦN 4: API ENDPOINTS                            ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>PHẦN 4: API ENDPOINTS (AJAX)</h1>
+<p>Tất cả API trả về JSON. Được gọi bằng Fetch API hoặc jQuery AJAX từ phía client.</p>
+
+<h2>4.1. api/cart.php — API Giỏ hàng</h2>
+<table>
+<tr><th>Action</th><th>Method</th><th>Tham số</th><th>Mô tả</th></tr>
+<tr><td><code>add</code></td><td>POST</td><td>item_id, qty</td><td>Thêm sản phẩm vào giỏ. Trả về cart_count mới.</td></tr>
+<tr><td><code>remove</code></td><td>POST</td><td>item_id</td><td>Xóa sản phẩm khỏi giỏ. Trả về cart_count + subtotal mới.</td></tr>
+<tr><td><code>update_qty</code></td><td>POST</td><td>item_id, qty</td><td>Cập nhật số lượng. Trả về item_total + subtotal mới (đã format tiền VNĐ).</td></tr>
+</table>
+<div class="note"><b>Bảo mật:</b> Yêu cầu đăng nhập (kiểm tra cookie/session user_id). User_id = 0 → trả lỗi.</div>
+
+<h2>4.2. api/wishlist.php — API Danh sách yêu thích</h2>
+<table>
+<tr><th>Action</th><th>Method</th><th>Tham số</th><th>Mô tả</th></tr>
+<tr><td><code>toggle</code></td><td>POST</td><td>item_id</td><td>Thêm/xóa khỏi yêu thích. Trả về action ('added'/'removed') + wishlist_count.</td></tr>
+<tr><td><code>remove</code></td><td>POST</td><td>item_id</td><td>Xóa khỏi yêu thích. Trả về wishlist_count mới.</td></tr>
+</table>
+
+<h2>4.3. api/apply_coupon.php — API Mã giảm giá</h2>
+<p><b>Method:</b> POST | <b>Tham số:</b> code (mã coupon), cart_total (tổng giỏ hàng)</p>
+<p><b>Quy trình xử lý:</b></p>
+<ol>
+    <li>Kiểm tra mã tồn tại trong DB (BINARY — phân biệt hoa/thường)</li>
+    <li>Kiểm tra status = 1 (đang hoạt động)</li>
+    <li>Kiểm tra thời hạn (valid_from ≤ now ≤ valid_until)</li>
+    <li>Kiểm tra lượt sử dụng (used_count < usage_limit)</li>
+    <li>Kiểm tra giá trị đơn hàng tối thiểu (cart_total ≥ min_order_value)</li>
+    <li>Tính giảm giá: percent → cart_total × (discount_value/100) | fixed → discount_value</li>
+    <li>Áp dụng cap max_discount (nếu có) và không vượt quá cart_total</li>
+</ol>
+<p><b>Response:</b> {status, message, discount_amount, code}</p>
+
+<h2>4.4. api/admin_order_api.php — API Quản lý đơn (Admin)</h2>
+<table>
+<tr><th>Action</th><th>Tham số</th><th>Mô tả</th></tr>
+<tr><td><code>update_status</code></td><td>order_id, status</td><td>Cập nhật trạng thái đơn hàng. Gọi AdminOrderController::updateOrderStatus().</td></tr>
+<tr><td><code>handle_return</code></td><td>request_id, status, order_id</td><td>Duyệt/từ chối yêu cầu đổi trả. Nếu approved → chuyển đơn sang 'returned'.</td></tr>
+</table>
+<div class="warn"><b>Bảo mật:</b> Kiểm tra SESSION logged=true VÀ privilege=1 (Admin). Unauthorized → trả JSON lỗi.</div>
+
+<h2>4.5. api/products.php — API Lọc sản phẩm</h2>
+<p><b>Method:</b> GET | <b>Tham số:</b> brand (brand_id hoặc *), keyword (từ khóa tìm kiếm)</p>
+<p>Trả về HTML (không phải JSON) — danh sách card sản phẩm đã render. Hỗ trợ lọc theo hãng và tìm kiếm. Hiển thị nút "Đã thêm" nếu sản phẩm đã có trong giỏ, và trái tim đỏ nếu đã yêu thích.</p>
+
+<h2>4.6. api/category_ajax.php — API Danh mục + Phân trang</h2>
+<p><b>Method:</b> GET | <b>Tham số:</b> brand_id, page, sort, cat</p>
+<p><b>Chức năng:</b> Đây là API chính của trang danh mục, trả về HTML đã render bao gồm:</p>
+<ul>
+    <li>Thanh điều hướng (mobile pills cho danh mục phụ kiện)</li>
+    <li>Tiêu đề + đếm sản phẩm</li>
+    <li>Thanh sắp xếp (Mới nhất, Giá tăng, Giá giảm, Tên A-Z)</li>
+    <li>Grid sản phẩm với review stats (getBulkReviewStats chống N+1)</li>
+    <li>Phân trang động</li>
+</ul>
+
+<h2>4.7. api/live_search.php — API Tìm kiếm gợi ý tức thì</h2>
+<p><b>Method:</b> GET | <b>Tham số:</b> q (từ khóa, tối thiểu 2 ký tự)</p>
+<p>Trả về JSON tối đa 7 sản phẩm khớp tên hoặc hãng. Sử dụng Prepared Statement. Chuẩn hóa đường dẫn ảnh.</p>
+
+<h2>4.8. api/compare_data.php — API So sánh sản phẩm</h2>
+<p><b>Method:</b> GET | <b>Tham số:</b> ids (danh sách ID cách nhau bằng dấu phẩy, tối đa 3)</p>
+<p>Trả về JSON chi tiết sản phẩm bao gồm:</p>
+<ul>
+    <li>Thông tin cơ bản: id, name, price, image, brand_name, category</li>
+    <li>Review stats: avg_rating, review_count</li>
+    <li><b>Thông số kỹ thuật giả lập</b> (specs) dựa trên hãng và danh mục: Màn hình, Chip, Camera, Pin (cho phone); Kiểu dáng, Kết nối, Thời lượng pin, Chống ồn (cho headphone); v.v.</li>
+</ul>
+
+<h2>4.9. api/chatbot_api.php — API Chatbot AI</h2>
+<p><b>Method:</b> POST (JSON) | <b>Tham số:</b> message (tin nhắn người dùng)</p>
+<p><b>Hai chế độ hoạt động:</b></p>
+<ul>
+    <li><b>Fallback mode:</b> Khi chưa có API Key → trả phản hồi giả lập với các gợi ý cố định (điện thoại, phụ kiện, hỗ trợ)</li>
+    <li><b>AI mode:</b> Khi có Gemini API Key → gọi Google Gemini 1.5 Flash API với system prompt định hướng tính cách tư vấn viên CLK Store (xưng "Em", gọi "Anh/Chị", dùng emoji, báo giá tham khảo, chính sách bảo hành)</li>
+</ul>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              PHẦN 5: CÁC TRANG FRONTEND                      ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>PHẦN 5: CÁC TRANG FRONTEND (NGƯỜI DÙNG)</h1>
+
+<h2>5.1. index.php — Trang chủ</h2>
+<p><b>Chức năng:</b></p>
+<ul>
+    <li><b>Sidebar danh mục:</b> Liệt kê thương hiệu (Tất cả, Apple, Samsung, Redmi/Xiaomi, Oppo) với icon. Hotline + giờ làm việc.</li>
+    <li><b>Banner slider:</b> OWL Carousel tự động chuyển ảnh (libs/banner.php)</li>
+    <li><b>CTA đăng ký:</b> Hiển thị banner mời đăng ký chỉ cho khách chưa đăng nhập</li>
+    <li><b>Sản phẩm nổi bật:</b> libs/featured.php</li>
+    <li><b>Banner quảng cáo:</b> libs/ads.php</li>
+    <li><b>Điện thoại mới nhất:</b> libs/new-phones.php</li>
+    <li><b>Phụ kiện chính hãng:</b> libs/accessory.php</li>
+    <li><b>Tin tức:</b> libs/news.php</li>
+</ul>
+<p><b>Xử lý POST form:</b> Xử lý 8 action: thêm giỏ hàng (từ top_sale, special_price, new_phones, buy_product), xóa giỏ, toggle/delete wishlist, đăng nhập, đăng xuất, đăng ký.</p>
+
+<h2>5.2. login.php — Đăng nhập</h2>
+<p>Hiển thị form đăng nhập (libs/login-form.php). Gọi Account::login() khi submit.</p>
+
+<h2>5.3. register.php — Đăng ký</h2>
+<p>Hiển thị form đăng ký (libs/register-form.php). Thu thập: họ tên, username, password, SĐT, email, thành phố, giới tính, địa chỉ. Gọi Account::register().</p>
+
+<h2>5.4. products.php — Danh sách sản phẩm</h2>
+<p>Trang danh mục chính. Sử dụng libs/category-page.php để render. Hỗ trợ lọc theo brand_id qua URL parameter. Sử dụng AJAX (api/category_ajax.php) để load danh mục không reload trang.</p>
+
+<h2>5.5. details.php — Chi tiết sản phẩm</h2>
+<p>Hiển thị chi tiết 1 sản phẩm (libs/product-details.php — 46KB, file lớn nhất). Bao gồm:</p>
+<ul>
+    <li>Ảnh sản phẩm + gallery</li>
+    <li>Thông tin: tên, giá, hãng, đánh giá trung bình</li>
+    <li>Chọn biến thể RAM/ROM (nếu có) → đổi giá động</li>
+    <li>Chọn số lượng (tăng/giảm)</li>
+    <li>Nút: Thêm vào giỏ, Mua ngay, Yêu thích, So sánh</li>
+    <li>Sản phẩm liên quan (cùng hãng)</li>
+    <li>Gợi ý mua kèm (Cross-sell)</li>
+    <li><b>Hệ thống đánh giá:</b> Hiển thị biểu đồ sao, danh sách review. Form thêm đánh giá (chỉ khi đã mua + đã giao + chưa đánh giá). Nút xóa review (chỉ chính chủ).</li>
+</ul>
+
+<h2>5.6. search.php — Tìm kiếm</h2>
+<p>Tìm kiếm sản phẩm theo từ khóa. Gọi Product::searchProduct(). Hiển thị kết quả dạng grid card.</p>
+
+<h2>5.7. compare.php — So sánh sản phẩm</h2>
+<p><b>Chức năng:</b> So sánh tối đa 3 sản phẩm side-by-side.</p>
+<ul>
+    <li>Đọc danh sách ID từ localStorage (key: compare_ids_v2)</li>
+    <li>Gọi Fetch API → api/compare_data.php lấy dữ liệu</li>
+    <li>Render bảng ma trận: Card sản phẩm (header), Giá (highlight thấp nhất), Thương hiệu, Đánh giá (highlight cao nhất), Thông số kỹ thuật động theo danh mục</li>
+    <li>Nút xóa từng sản phẩm, xóa tất cả</li>
+    <li>Responsive: mobile hiển thị block, desktop hiển thị table</li>
+</ul>
+
+<h2>5.8. cart.php — Giỏ hàng</h2>
+<p>Hiển thị danh sách sản phẩm trong giỏ (libs/cart-list.php) hoặc giỏ hàng rỗng (libs/cart-empty.php). Tăng/giảm số lượng qua AJAX. Hiển thị tổng tiền. Nút "Thanh toán".</p>
+
+<h2>5.9. checkout.php — Thanh toán</h2>
+<p><b>Đây là trang phức tạp nhất (25.5KB).</b> Bao gồm:</p>
+<ul>
+    <li><b>Địa chỉ nhận hàng:</b> Hiển thị + chỉnh sửa inline (toggle ẩn/hiện form edit)</li>
+    <li><b>Danh sách sản phẩm:</b> Ảnh, tên, số lượng, giá</li>
+    <li><b>Phương thức vận chuyển:</b> Tiêu chuẩn (20.000đ, 3-5 ngày) / Nhanh (40.000đ, 1-2 ngày)</li>
+    <li><b>Phương thức thanh toán:</b> COD / MoMo / Chuyển khoản ngân hàng</li>
+    <li><b>Mã giảm giá:</b> Nhập mã thủ công hoặc chọn từ danh sách ưu đãi có sẵn. Gọi api/apply_coupon.php qua AJAX.</li>
+    <li><b>Tóm tắt đơn hàng:</b> Tiền hàng, phí ship, giảm giá, tổng cộng (tính toán realtime bằng JS)</li>
+    <li><b>Xử lý đặt hàng (POST):</b> Transaction MySQL: tăng used_count coupon → INSERT orders → INSERT order_detail (lấy giá thực từ DB chống fake) → trừ tồn kho → xóa giỏ hàng → COMMIT. Thất bại → ROLLBACK.</li>
+</ul>
+
+<h2>5.10. history.php — Lịch sử đơn hàng</h2>
+<p>Hiển thị danh sách đơn hàng của user đã đăng nhập. Mỗi đơn hiển thị: Mã đơn (format #ORD-00001), ngày đặt, trạng thái (badge màu), tổng tiền, địa chỉ giao.</p>
+<p><b>Nút hành động theo trạng thái:</b></p>
+<ul>
+    <li>Luôn có: "Chi tiết" → order_detail.php</li>
+    <li>pending: "Hủy" → cancel_order.php (confirm trước khi hủy)</li>
+    <li>delivered: "Đổi trả" → return_request.php</li>
+</ul>
+
+<h2>5.11. order_detail.php — Chi tiết đơn hàng</h2>
+<p>Hiển thị chi tiết 1 đơn hàng: trạng thái timeline, thông tin giao hàng, danh sách sản phẩm (ảnh, tên, số lượng, giá), tổng cộng.</p>
+
+<h2>5.12. cancel_order.php — Hủy đơn hàng</h2>
+<p><b>Quy trình:</b></p>
+<ol>
+    <li>Kiểm tra đăng nhập</li>
+    <li>Kiểm tra đơn thuộc user hiện tại VÀ status = 'pending'</li>
+    <li>UPDATE status = 'cancelled'</li>
+    <li>Phục hồi tồn kho: lặp qua order_detail → UPDATE product SET stock = stock + quantity</li>
+    <li>Set toast message → redirect history.php</li>
+</ol>
+
+<h2>5.13. return_request.php — Yêu cầu đổi trả</h2>
+<p>Form nhập lý do đổi trả. Chỉ cho phép khi đơn đã giao (delivered). Gọi OrderController::requestReturn(). Tạo bản ghi return_request với status = 'pending'.</p>
+
+<h2>5.14. profile.php — Quản lý hồ sơ</h2>
+<p><b>Chức năng:</b></p>
+<ul>
+    <li><b>Upload avatar:</b> Click icon camera → chọn file → tự động submit form → lưu file vào assets/avatars/ → UPDATE user SET avatar</li>
+    <li><b>Cập nhật thông tin:</b> Họ tên, SĐT, địa chỉ (email chỉ đọc)</li>
+    <li><b>Sidebar menu:</b> Thông tin cá nhân, Đơn hàng của tôi, Yêu thích, Đăng xuất</li>
+</ul>
+
+<h2>5.15. wishlist.php — Danh sách yêu thích</h2>
+<p>Hiển thị sản phẩm đã thêm vào yêu thích. Nút: Xem chi tiết, Thêm vào giỏ, Xóa khỏi yêu thích.</p>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              PHẦN 6: ADMIN PANEL                              ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>PHẦN 6: CÁC TRANG ADMIN PANEL</h1>
+
+<p>Tất cả trang admin nằm trong thư mục <code>admin/</code>. Sử dụng header.php + footer.php riêng. Yêu cầu privilege = 1.</p>
+
+<h2>6.1. admin/dashboard.php — Thống kê &amp; Báo cáo</h2>
+<p>Trang thống kê tổng quan (24KB). Include libs/dashboard-stats.php. Hiển thị:</p>
+<ul>
+    <li>Tổng doanh thu, tổng đơn hàng, tổng sản phẩm, tổng người dùng</li>
+    <li>Biểu đồ đơn hàng theo trạng thái</li>
+    <li>Đơn hàng gần đây</li>
+    <li>Sản phẩm bán chạy</li>
+</ul>
+
+<h2>6.2. admin/products.php — Quản lý sản phẩm</h2>
+<p><b>Chức năng CRUD đầy đủ:</b></p>
+<ul>
+    <li><b>Danh sách:</b> Bảng hiển thị tất cả sản phẩm (ảnh, tên, hãng, giá, danh mục, tồn kho)</li>
+    <li><b>Thêm mới:</b> Form: tên, chọn hãng (dropdown), giá, upload ảnh, chọn danh mục, nhập tồn kho. Gọi Manage::insertProduct()</li>
+    <li><b>Sửa:</b> Modal/form edit với dữ liệu đã điền sẵn. Gọi Manage::updateProduct()</li>
+    <li><b>Xóa:</b> Confirm trước khi xóa. Gọi Manage::deleteProduct()</li>
+</ul>
+
+<h2>6.3. admin/orders.php — Quản lý đơn hàng</h2>
+<p><b>Chức năng (20KB):</b></p>
+<ul>
+    <li><b>Bộ lọc:</b> Theo trạng thái, tìm kiếm (tên/mã đơn), khoảng thời gian</li>
+    <li><b>Bảng đơn hàng:</b> Mã đơn, tên khách, ngày đặt, tổng tiền, trạng thái (badge màu)</li>
+    <li><b>Cập nhật trạng thái:</b> Dropdown chọn trạng thái mới → gọi AJAX api/admin_order_api.php</li>
+    <li><b>Quản lý đổi trả:</b> Hiển thị yêu cầu đổi trả, nút Duyệt/Từ chối</li>
+    <li><b>Phân trang</b></li>
+    <li><b>Tabs thống kê nhanh:</b> Hiển thị số lượng theo từng trạng thái</li>
+</ul>
+
+<h2>6.4. admin/account.php — Quản lý người dùng</h2>
+<p><b>Chức năng:</b></p>
+<ul>
+    <li>Danh sách tài khoản (username, email, quyền hạn)</li>
+    <li>Thêm tài khoản mới (username, password, email, privilege)</li>
+    <li>Sửa tài khoản (đổi username, password, email, quyền)</li>
+    <li>Xóa tài khoản (xóa cả account + user)</li>
+</ul>
+
+<h2>6.5. admin/categories.php — Quản lý danh mục &amp; hãng</h2>
+<p><b>Chức năng:</b></p>
+<ul>
+    <li><b>Quản lý hãng sản xuất:</b> Thêm/sửa/xóa manufacturer (tên hãng, trụ sở)</li>
+    <li><b>Quản lý danh mục:</b> Thêm/sửa/xóa category (slug, tên, icon FontAwesome)</li>
+</ul>
+
+<h2>6.6. admin/coupons.php — Quản lý mã giảm giá</h2>
+<p><b>Chức năng (12KB):</b></p>
+<ul>
+    <li>Danh sách mã giảm giá (code, loại, giá trị, giới hạn, đã dùng, trạng thái, thời hạn)</li>
+    <li>Thêm mã mới: code, discount_value, discount_type (percent/fixed), min_order_value, max_discount, usage_limit, valid_from/until</li>
+    <li>Sửa/Xóa mã giảm giá</li>
+    <li>Bật/tắt trạng thái hoạt động</li>
+</ul>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              PHẦN 7: JAVASCRIPT                               ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>PHẦN 7: JAVASCRIPT — XỬ LÝ PHÍA CLIENT</h1>
+
+<h2>7.1. script.js — File JS chính (7.6KB)</h2>
+
+<table>
+<tr><th>#</th><th>Chức năng</th><th>Mô tả chi tiết</th></tr>
+<tr><td>1</td><td><b>Banner OWL Carousel</b></td><td>Slider banner trang chủ: 1 item, autoplay 5 giây, loop, dots navigation.</td></tr>
+<tr><td>2</td><td><b>Top Sale Carousel</b></td><td>Slider sản phẩm bán chạy: responsive (1/3/5 items), có navigation arrows.</td></tr>
+<tr><td>3</td><td><b>New Phones Carousel</b></td><td>Slider điện thoại mới: responsive (1/3/5 items), dots navigation.</td></tr>
+<tr><td>4</td><td><b>Blogs Carousel</b></td><td>Slider tin tức/blog: responsive (1/3 items).</td></tr>
+<tr><td>5</td><td><b>Xác nhận xóa</b></td><td>Event delegation: Tất cả nút .btn-danger hoặc chứa text "xóa" → hiện confirm() trước khi submit.</td></tr>
+<tr><td>6</td><td><b>Preview ảnh upload</b></td><td>Khi chọn file ảnh (input[type="file"]) → hiển thị preview bằng FileReader API.</td></tr>
+<tr><td>7</td><td><b>AJAX tăng/giảm số lượng (Cart)</b></td><td>Click .qty-up / .qty-down → gửi AJAX POST cập nhật số lượng → reload trang.</td></tr>
+<tr><td>8</td><td><b>Tăng/giảm số lượng (Product Detail)</b></td><td>Click .btn-qty-up / .btn-qty-down → cập nhật display + hidden input.</td></tr>
+<tr><td>9</td><td><b>Chọn màu sắc</b></td><td>Click .color-circle → highlight bằng outline + class active.</td></tr>
+<tr><td>10</td><td><b>Chọn RAM/ROM + Đổi giá</b></td><td>Click .variant-option → active class, lấy data-price → format VNĐ bằng Intl.NumberFormat → cập nhật giá hiển thị + hidden input.</td></tr>
+<tr><td>11</td><td><b>setRole()</b></td><td>Chọn quyền (Admin/User) khi đăng ký: cập nhật hidden input #role.</td></tr>
+<tr><td>12</td><td><b>toggleEditAddress() / saveAddressChange()</b></td><td>Ẩn/hiện form chỉnh sửa địa chỉ (Checkout). Cập nhật display text + hidden input.</td></tr>
+</table>
+
+<h2>7.2. Các hàm AJAX Global (trong các trang)</h2>
+
+<table>
+<tr><th>Hàm</th><th>File sử dụng</th><th>Mô tả</th></tr>
+<tr><td><code>addToCart(id, btn)</code></td><td>Nhiều trang</td><td>Fetch POST → api/cart.php (action=add). Cập nhật badge giỏ hàng, đổi nút thành "✓ Đã thêm".</td></tr>
+<tr><td><code>toggleWishlist(id, btn)</code></td><td>Nhiều trang</td><td>Fetch POST → api/wishlist.php (action=toggle). Đổi màu icon trái tim đỏ/xám.</td></tr>
+<tr><td><code>addToCompare(id)</code></td><td>product-details</td><td>Lưu ID vào localStorage (compare_ids_v2). Giới hạn 3. Toast thông báo.</td></tr>
+<tr><td><code>removeFromCompare(id)</code></td><td>compare.php</td><td>Xóa ID khỏi localStorage, reload bảng so sánh.</td></tr>
+<tr><td><code>clearCompare()</code></td><td>compare.php</td><td>Xóa toàn bộ localStorage compare_ids_v2.</td></tr>
+<tr><td><code>loadCategoryPage(params)</code></td><td>category-page</td><td>Fetch GET → api/category_ajax.php. Load sản phẩm theo brand/category/sort/page mà không reload trang.</td></tr>
+<tr><td><code>applyCoupon()</code></td><td>checkout.php</td><td>Fetch POST → api/apply_coupon.php. Hiển thị kết quả, cập nhật discount + tổng tiền.</td></tr>
+<tr><td><code>updateTotal()</code></td><td>checkout.php</td><td>Tính lại tổng tiền realtime: subtotal + shipFee - discount.</td></tr>
+</table>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              PHẦN 8: HELPER FUNCTIONS                         ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>PHẦN 8: HELPER FUNCTIONS &amp; KHỞI TẠO HỆ THỐNG</h1>
+
+<h2>8.1. func/functions.php — File khởi tạo chính</h2>
+<p>File này được include bởi mọi trang thông qua func/header.php. Chịu trách nhiệm:</p>
+
+<table>
+<tr><th>Chức năng</th><th>Mô tả</th></tr>
+<tr><td><b>Session Management</b></td><td>Khởi tạo session. Set SESSION['logged'] = false nếu chưa có. Backward-compat: copy user_id/privilege từ cookie vào session nếu thiếu.</td></tr>
+<tr><td><b>Require Dependencies</b></td><td>Load tất cả class: DBConnect, Product, Cart, Wishlist, Account, Manage.</td></tr>
+<tr><td><b>Khởi tạo Objects</b></td><td>Tạo: $db (DBConnect), $product + $productData, $cart, $wishlist, $acc + $accData, $manage + $manageData + $brandData.</td></tr>
+<tr><td><b>img_url($image, $prefix)</b></td><td><b>Helper chuẩn hóa URL ảnh:</b> Xử lý 3 trường hợp: rỗng → no-image.png, đường dẫn cũ (./assets/...) → loại bỏ ./, tên file thuần → thêm prefix assets/products/.</td></tr>
+<tr><td><b>Auto-create Tables</b></td><td>Tự động tạo bảng nếu chưa tồn tại: wishlist, product_variant, coupons. Tự thêm cột discount_amount vào orders nếu chưa có.</td></tr>
+<tr><td><b>Chuẩn hóa productData</b></td><td>Áp dụng img_url() cho toàn bộ productData 1 lần duy nhất (array_map).</td></tr>
+</table>
+
+<h2>8.2. func/header.php — Layout Header</h2>
+<p>Header chung cho toàn bộ frontend (19.6KB). Bao gồm:</p>
+<ul>
+    <li>Include functions.php (khởi tạo hệ thống)</li>
+    <li>HTML head: meta tags, CSS (Bootstrap, Font Awesome, OWL Carousel, Google Fonts, style.css)</li>
+    <li>Navigation bar: Logo, thanh tìm kiếm (Live Search), menu danh mục (dropdown), nút giỏ hàng (badge đếm), nút yêu thích, nút so sánh, avatar/đăng nhập</li>
+    <li>Toast notification system</li>
+    <li>Widget Chatbot (libs/chatbot.php)</li>
+</ul>
+
+<h2>8.3. func/footer.php — Layout Footer</h2>
+<p>Footer chung (6.1KB). Bao gồm:</p>
+<ul>
+    <li>Thông tin cửa hàng, liên hệ, mạng xã hội</li>
+    <li>Danh sách liên kết nhanh</li>
+    <li>Copyright</li>
+    <li>JS: jQuery, Bootstrap, OWL Carousel, script.js</li>
+</ul>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              LUỒNG HOẠT ĐỘNG CHÍNH                            ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>PHỤ LỤC: CÁC LUỒNG HOẠT ĐỘNG CHÍNH</h1>
+
+<h2>A. Luồng Mua hàng</h2>
+<div class="code">1. Khách xem sản phẩm (index.php / products.php / details.php)
+2. Thêm vào giỏ hàng (addToCart → api/cart.php → Cart::addToCart)
+3. Xem giỏ hàng (cart.php) → Chỉnh số lượng (AJAX update_qty)
+4. Thanh toán (checkout.php):
+   a. Chọn/chỉnh địa chỉ giao hàng
+   b. Chọn phương thức vận chuyển (Tiêu chuẩn/Nhanh)
+   c. Chọn phương thức thanh toán (COD/MoMo/Bank)
+   d. Áp dụng mã giảm giá (AJAX → api/apply_coupon.php)
+   e. Xác nhận đặt hàng (POST)
+5. Hệ thống: Transaction → INSERT orders + order_detail → trừ stock → xóa cart → COMMIT
+6. Redirect → history.php (hiển thị đơn mới)</div>
+
+<h2>B. Luồng Quản lý đơn hàng (Admin)</h2>
+<div class="code">1. Admin vào admin/orders.php
+2. Lọc đơn hàng (status/search/date)
+3. Xem chi tiết đơn
+4. Cập nhật trạng thái: pending → confirmed → packing → shipping → delivered
+   (AJAX → api/admin_order_api.php → AdminOrderController → Order::updateStatus)
+5. Nếu hủy/hoàn trả → tự động phục hồi stock</div>
+
+<h2>C. Luồng Đổi trả hàng</h2>
+<div class="code">1. User có đơn delivered → bấm "Đổi trả" (history.php)
+2. Nhập lý do → POST return_request.php → OrderController::requestReturn()
+3. Tạo return_request (status = pending)
+4. Admin xem yêu cầu → Duyệt/Từ chối (AJAX → admin_order_api.php)
+5. Nếu approved → đơn hàng chuyển sang 'returned' → phục hồi stock</div>
+
+<h2>D. Luồng Đánh giá sản phẩm</h2>
+<div class="code">1. User đã mua sản phẩm VÀ đơn đã giao (delivered)
+2. Vào trang chi tiết sản phẩm (details.php)
+3. Kiểm tra: hasPurchased() = true VÀ hasReviewed() = false
+4. Hiển thị form đánh giá (1-5 sao + bình luận)
+5. POST → Product::addReview() → INSERT reviews
+6. Chống spam: mỗi user chỉ đánh giá 1 lần/sản phẩm</div>
+
+<h2>E. Luồng So sánh sản phẩm</h2>
+<div class="code">1. User bấm nút "So sánh" trên card sản phẩm
+2. JS lưu product_id vào localStorage (compare_ids_v2, tối đa 3)
+3. Vào trang compare.php
+4. JS đọc localStorage → Fetch api/compare_data.php?ids=1,2,3
+5. Render bảng ma trận so sánh: giá, hãng, rating, thông số kỹ thuật
+6. Highlight: giá thấp nhất (xanh), đánh giá cao nhất (xanh)</div>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗ -->
+<!-- ║              BẢNG TÓM TẮT                                    ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════╝ -->
+
+<div class="pb"></div>
+<h1>BẢNG TÓM TẮT TOÀN BỘ CHỨC NĂNG</h1>
+
+<table>
+<tr><th>STT</th><th>Nhóm chức năng</th><th>Chức năng cụ thể</th><th>File chính</th></tr>
+<tr><td>1</td><td rowspan="3"><b>Xác thực</b></td><td>Đăng nhập (username + password)</td><td>login.php, Account.php</td></tr>
+<tr><td>2</td><td>Đăng ký tài khoản</td><td>register.php, Account.php</td></tr>
+<tr><td>3</td><td>Đăng xuất</td><td>logout.php, Account.php</td></tr>
+
+<tr><td>4</td><td rowspan="6"><b>Sản phẩm</b></td><td>Xem danh sách sản phẩm (theo hãng, danh mục)</td><td>products.php, category_ajax.php</td></tr>
+<tr><td>5</td><td>Xem chi tiết sản phẩm</td><td>details.php, product-details.php</td></tr>
+<tr><td>6</td><td>Tìm kiếm sản phẩm</td><td>search.php, live_search.php</td></tr>
+<tr><td>7</td><td>So sánh sản phẩm (tối đa 3)</td><td>compare.php, compare_data.php</td></tr>
+<tr><td>8</td><td>Chọn biến thể RAM/ROM</td><td>product-details.php, script.js</td></tr>
+<tr><td>9</td><td>Gợi ý mua kèm (Cross-sell)</td><td>Product::getCrossSellProducts()</td></tr>
+
+<tr><td>10</td><td rowspan="4"><b>Giỏ hàng</b></td><td>Thêm vào giỏ (AJAX + Form)</td><td>api/cart.php, Cart.php</td></tr>
+<tr><td>11</td><td>Cập nhật số lượng (AJAX)</td><td>api/cart.php, Cart.php</td></tr>
+<tr><td>12</td><td>Xóa khỏi giỏ</td><td>api/cart.php, Cart.php</td></tr>
+<tr><td>13</td><td>Tính tổng tiền realtime</td><td>cart.php, Cart.php</td></tr>
+
+<tr><td>14</td><td rowspan="2"><b>Yêu thích</b></td><td>Toggle yêu thích (AJAX)</td><td>api/wishlist.php, Wishlist.php</td></tr>
+<tr><td>15</td><td>Xem danh sách yêu thích</td><td>wishlist.php</td></tr>
+
+<tr><td>16</td><td rowspan="5"><b>Đơn hàng</b></td><td>Đặt hàng (checkout)</td><td>checkout.php, Order.php</td></tr>
+<tr><td>17</td><td>Xem lịch sử đơn</td><td>history.php</td></tr>
+<tr><td>18</td><td>Xem chi tiết đơn</td><td>order_detail.php</td></tr>
+<tr><td>19</td><td>Hủy đơn (chỉ pending)</td><td>cancel_order.php</td></tr>
+<tr><td>20</td><td>Yêu cầu đổi trả (chỉ delivered)</td><td>return_request.php</td></tr>
+
+<tr><td>21</td><td rowspan="2"><b>Mã giảm giá</b></td><td>Áp dụng mã giảm giá (AJAX)</td><td>api/apply_coupon.php</td></tr>
+<tr><td>22</td><td>Hiển thị ưu đãi khả dụng</td><td>checkout.php</td></tr>
+
+<tr><td>23</td><td rowspan="4"><b>Đánh giá</b></td><td>Xem đánh giá sản phẩm</td><td>product-details.php, Product.php</td></tr>
+<tr><td>24</td><td>Thêm đánh giá (1-5 sao)</td><td>Product::addReview()</td></tr>
+<tr><td>25</td><td>Xóa đánh giá (chỉ chính chủ)</td><td>Product::deleteReview()</td></tr>
+<tr><td>26</td><td>Thống kê sao + biểu đồ</td><td>Product::getReviewStats()</td></tr>
+
+<tr><td>27</td><td rowspan="2"><b>Hồ sơ</b></td><td>Cập nhật thông tin cá nhân</td><td>profile.php</td></tr>
+<tr><td>28</td><td>Upload avatar</td><td>profile.php</td></tr>
+
+<tr><td>29</td><td><b>Chatbot</b></td><td>Chatbot tư vấn AI (Gemini/Fallback)</td><td>chatbot.php, chatbot_api.php</td></tr>
+
+<tr><td>30</td><td rowspan="6"><b>Admin</b></td><td>Quản lý sản phẩm (CRUD)</td><td>admin/products.php, Manage.php</td></tr>
+<tr><td>31</td><td>Quản lý đơn hàng + cập nhật trạng thái</td><td>admin/orders.php, admin_order_api.php</td></tr>
+<tr><td>32</td><td>Quản lý người dùng (CRUD)</td><td>admin/account.php, Account.php</td></tr>
+<tr><td>33</td><td>Quản lý danh mục &amp; hãng</td><td>admin/categories.php, Manage.php</td></tr>
+<tr><td>34</td><td>Quản lý mã giảm giá</td><td>admin/coupons.php</td></tr>
+<tr><td>35</td><td>Thống kê doanh thu &amp; báo cáo</td><td>admin/dashboard.php, dashboard-stats.php</td></tr>
+</table>
+
+<br><br>
+<div class="footer">
+    <p>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+    <p><b>TÀI LIỆU CHI TIẾT CÁC CHỨC NĂNG — CLK APPLE STORE</b></p>
+    <p>Tổng cộng: <b>35 chức năng chính</b> | <b>11 Class PHP</b> | <b>9 API endpoints</b> | <b>10 bảng Database</b></p>
+    <p>Ngày tạo: 05/06/2026 | Phiên bản 1.0</p>
+    <p>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</p>
+</div>
+
+</body>
+</html>
